@@ -1,0 +1,132 @@
+// ============================================================
+// ARCHIVO: _grid.scss
+//
+// RESPONSABILIDAD:
+// Proveer clases utilitarias de grid CSS para crear layouts
+// responsivos de múltiples columnas. Define grids predefinidos
+// con comportamiento mobile-first.
+//
+// DEBE CONTENER:
+// - Clase .grid base
+// - Variaciones .grid-2, .grid-3, .grid-4
+// - Comportamiento responsive automático
+// - Utilidades de gap (espaciado entre elementos)
+//
+// NO DEBE CONTENER:
+// - Estilos de componentes específicos
+// - Grids de una sola página (van en el componente)
+// - Flexbox layouts (van en utilidades separadas)
+// - Variables (se importan desde abstracts)
+//
+// MODIFICAR CUANDO:
+// - Se necesite un nuevo layout de grid (ej: .grid-5)
+// - Se ajusten los breakpoints de responsive
+// - Se modifiquen los gaps por defecto
+//
+// EJEMPLO DE USO:
+// <div class="grid grid-3">
+//   <div>Columna 1</div>
+//   <div>Columna 2</div>
+//   <div>Columna 3</div>
+// </div>
+// ============================================================
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+// -----------------------------------------------------------
+// GRID BASE
+// -----------------------------------------------------------
+
+/// Clase base para todos los grids.
+/// Por defecto: 1 columna en móvil.
+.grid {
+  display: grid;
+  gap: $spacing-lg;
+
+  @include respond-to('tablet') {
+    gap: $spacing-xl;
+  }
+}
+
+// -----------------------------------------------------------
+// VARIACIONES DE COLUMNAS
+// -----------------------------------------------------------
+
+/// Grid de 2 columnas.
+/// Móvil: 1 columna → Tablet+: 2 columnas.
+.grid-2 {
+  @extend .grid;
+  grid-template-columns: 1fr;
+
+  @include respond-to('tablet') {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/// Grid de 3 columnas.
+/// Móvil: 1 columna → Tablet: 2 columnas → Laptop+: 3 columnas.
+.grid-3 {
+  @extend .grid;
+  grid-template-columns: 1fr;
+
+  @include respond-to('tablet') {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include respond-to('laptop') {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/// Grid de 4 columnas.
+/// Móvil: 1 col → Tablet: 2 col → Laptop: 3 col → Desktop: 4 col.
+.grid-4 {
+  @extend .grid;
+  grid-template-columns: 1fr;
+
+  @include respond-to('tablet') {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include respond-to('laptop') {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include respond-to('desktop') {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+// -----------------------------------------------------------
+// GRID AUTO-FILL (Flexible)
+// -----------------------------------------------------------
+
+/// Grid que auto-ajusta columnas según el espacio disponible.
+.grid-auto {
+  @extend .grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+
+// -----------------------------------------------------------
+// UTILIDADES DE GAP
+// -----------------------------------------------------------
+.gap-sm {
+  gap: $spacing-sm;
+}
+
+.gap-md {
+  gap: $spacing-md;
+}
+
+.gap-lg {
+  gap: $spacing-lg;
+}
+
+.gap-xl {
+  gap: $spacing-xl;
+}
+
+.gap-2xl {
+  gap: $spacing-2xl;
+}

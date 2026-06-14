@@ -1,1 +1,36 @@
-<p>navbar works!</p>
+<!--
+  ARCHIVO: navbar.html
+  RESPONSABILIDAD: Plantilla del Navbar
+-->
+<header [ngClass]="{'scrolled': isScrolled()}" class="navbar">
+  <div class="container">
+    <a routerLink="/" class="logo">Amy Developers</a>
+    
+    <nav class="desktop-nav">
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Inicio</a>
+      <a routerLink="/about" routerLinkActive="active">Nosotros</a>
+      <a routerLink="/services" routerLinkActive="active">Servicios</a>
+      <a routerLink="/portfolio" routerLinkActive="active">Portafolio</a>
+      <a routerLink="/pricing" routerLinkActive="active">Precios</a>
+      <a routerLink="/contact" class="btn btn-primary">Contacto</a>
+    </nav>
+
+    <button class="mobile-toggle" (click)="toggleMobileMenu()" aria-label="Abrir menú">
+      ☰
+    </button>
+  </div>
+</header>
+
+@if (isMobileMenuOpen()) {
+  <div class="mobile-menu">
+    <button class="close-btn" (click)="toggleMobileMenu()">✕</button>
+    <nav>
+      <a routerLink="/" (click)="toggleMobileMenu()">Inicio</a>
+      <a routerLink="/about" (click)="toggleMobileMenu()">Nosotros</a>
+      <a routerLink="/services" (click)="toggleMobileMenu()">Servicios</a>
+      <a routerLink="/portfolio" (click)="toggleMobileMenu()">Portafolio</a>
+      <a routerLink="/pricing" (click)="toggleMobileMenu()">Precios</a>
+      <a routerLink="/contact" (click)="toggleMobileMenu()">Contacto</a>
+    </nav>
+  </div>
+}

@@ -1,0 +1,35 @@
+/*
+  ARCHIVO: section-title.css
+  RESPONSABILIDAD: Estilos de Section Title
+*/
+.title-container {
+  margin-bottom: 3rem;
+}
+
+.subtitle {
+  display: block;
+  color: #6C63FF;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+}
+
+h2 {
+  font-size: 2.5rem;
+  color: #0D1117;
+  margin: 0 0 1rem 0;
+  font-weight: 700;
+}
+
+.decoration-line {
+  height: 4px;
+  width: 60px;
+  background: #6C63FF;
+  border-radius: 2px;
+}
+
+.decoration-line.center {
+  margin: 0 auto;
+}

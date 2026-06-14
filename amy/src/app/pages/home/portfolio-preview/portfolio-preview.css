@@ -1,0 +1,135 @@
+/*
+ * ARCHIVO: portfolio-preview.css
+ *
+ * RESPONSABILIDAD:
+ * Estilos de la sección de proyectos destacados.
+ * Define el layout del grid, tarjetas de proyecto y efectos hover.
+ *
+ * DEBE CONTENER:
+ * - Grid de tarjetas de proyecto.
+ * - Estilos del placeholder de imagen.
+ * - Tipografía de título, categoría y descripción.
+ * - Efectos hover en las tarjetas.
+ *
+ * NO DEBE CONTENER:
+ * - Estilos globales o de otras secciones.
+ *
+ * MODIFICAR CUANDO:
+ * - Se integren imágenes reales.
+ * - Se cambie el diseño de las tarjetas.
+ */
+
+.portfolio-preview {
+  padding: 5rem 1.5rem;
+  background-color: #ffffff;
+}
+
+.portfolio-preview__container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.portfolio-preview__header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.portfolio-preview__title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 0.75rem;
+}
+
+.portfolio-preview__subtitle {
+  font-size: 1.1rem;
+  color: #64748b;
+  max-width: 550px;
+  margin: 0 auto;
+}
+
+.portfolio-preview__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.portfolio-preview__card {
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+  transition: transform 0.2s, box-shadow 0.2s;
+  background: #ffffff;
+}
+
+.portfolio-preview__card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+}
+
+.portfolio-preview__image {
+  background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.portfolio-preview__image-icon {
+  font-size: 3.5rem;
+}
+
+.portfolio-preview__info {
+  padding: 1.5rem;
+}
+
+.portfolio-preview__category {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #7c3aed;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.portfolio-preview__project-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0.5rem 0;
+}
+
+.portfolio-preview__description {
+  font-size: 0.925rem;
+  color: #64748b;
+  line-height: 1.6;
+}
+
+.portfolio-preview__footer {
+  text-align: center;
+}
+
+.portfolio-preview__link {
+  display: inline-block;
+  color: #7c3aed;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  transition: background-color 0.2s;
+}
+
+.portfolio-preview__link:hover {
+  background-color: rgba(124, 58, 237, 0.08);
+}
+
+@media (max-width: 768px) {
+  .portfolio-preview__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .portfolio-preview__title {
+    font-size: 1.75rem;
+  }
+}

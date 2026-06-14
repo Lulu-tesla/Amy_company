@@ -1,0 +1,221 @@
+// ============================================================
+// ARCHIVO: _typography.scss
+//
+// RESPONSABILIDAD:
+// Definir los estilos tipográficos base de la aplicación.
+// Establece tamaños, pesos e interlineados para headings,
+// párrafos, enlaces y listas.
+//
+// DEBE CONTENER:
+// - Estilos para h1 a h6
+// - Estilos para párrafos (p)
+// - Estilos para enlaces (a)
+// - Estilos para listas (ul, ol)
+// - Importación de Google Fonts (Inter)
+// - Clases tipográficas de utilidad
+//
+// NO DEBE CONTENER:
+// - Estilos de componentes específicos
+// - Colores de marca (usar variables)
+// - Layout o posicionamiento
+// - Estilos de formulario
+//
+// MODIFICAR CUANDO:
+// - Se cambie la fuente principal
+// - Se ajuste la escala tipográfica
+// - Se agreguen nuevos estilos de texto base
+//
+// EJEMPLO DE USO:
+// Se importa automáticamente desde main.scss.
+// Los headings y párrafos heredan estos estilos.
+// ============================================================
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/functions' as *;
+@use '../abstracts/mixins' as *;
+
+// -----------------------------------------------------------
+// IMPORTACIÓN DE FUENTE
+// -----------------------------------------------------------
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+// -----------------------------------------------------------
+// CUERPO DE TEXTO
+// -----------------------------------------------------------
+body {
+  font-family: $font-primary;
+  font-size: $font-size-base;
+  font-weight: $font-weight-regular;
+  line-height: $line-height-normal;
+  color: $color-dark;
+}
+
+// -----------------------------------------------------------
+// HEADINGS (h1 - h6)
+// -----------------------------------------------------------
+h1 {
+  font-size: rem(36);
+  font-weight: $font-weight-extrabold;
+  line-height: $line-height-tight;
+  letter-spacing: $letter-spacing-tight;
+
+  @include respond-to('tablet') {
+    font-size: rem(48);
+  }
+
+  @include respond-to('desktop') {
+    font-size: rem(60);
+  }
+}
+
+h2 {
+  font-size: rem(30);
+  font-weight: $font-weight-bold;
+  line-height: $line-height-tight;
+  letter-spacing: $letter-spacing-tight;
+
+  @include respond-to('tablet') {
+    font-size: rem(36);
+  }
+
+  @include respond-to('desktop') {
+    font-size: rem(48);
+  }
+}
+
+h3 {
+  font-size: rem(24);
+  font-weight: $font-weight-bold;
+  line-height: $line-height-tight;
+
+  @include respond-to('tablet') {
+    font-size: rem(30);
+  }
+}
+
+h4 {
+  font-size: rem(20);
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-tight;
+
+  @include respond-to('tablet') {
+    font-size: rem(24);
+  }
+}
+
+h5 {
+  font-size: rem(18);
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-normal;
+
+  @include respond-to('tablet') {
+    font-size: rem(20);
+  }
+}
+
+h6 {
+  font-size: rem(16);
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-normal;
+
+  @include respond-to('tablet') {
+    font-size: rem(18);
+  }
+}
+
+// -----------------------------------------------------------
+// PÁRRAFOS
+// -----------------------------------------------------------
+p {
+  font-size: rem(16);
+  line-height: $line-height-relaxed;
+  margin-bottom: $spacing-md;
+  color: $color-gray-700;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// Párrafo destacado (lead)
+.text-lead {
+  font-size: rem(20);
+  font-weight: $font-weight-light;
+  line-height: $line-height-relaxed;
+  color: $color-gray-600;
+
+  @include respond-to('tablet') {
+    font-size: rem(24);
+  }
+}
+
+// -----------------------------------------------------------
+// ENLACES
+// -----------------------------------------------------------
+a {
+  color: $color-primary;
+  text-decoration: none;
+  transition: color $transition-fast;
+
+  &:hover {
+    color: $color-primary-dark;
+  }
+}
+
+// -----------------------------------------------------------
+// LISTAS
+// -----------------------------------------------------------
+ul,
+ol {
+  margin-bottom: $spacing-md;
+  padding-left: $spacing-lg;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+li {
+  margin-bottom: $spacing-xs;
+  line-height: $line-height-relaxed;
+}
+
+// -----------------------------------------------------------
+// CLASES TIPOGRÁFICAS DE UTILIDAD
+// -----------------------------------------------------------
+.text-gradient {
+  @include text-gradient;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+  letter-spacing: $letter-spacing-wider;
+}
+
+.text-sm {
+  font-size: rem(14);
+}
+
+.text-lg {
+  font-size: rem(20);
+}
+
+.text-bold {
+  font-weight: $font-weight-bold;
+}
+
+.text-light {
+  font-weight: $font-weight-light;
+}
+
+.text-muted {
+  color: $color-gray-500;
+}

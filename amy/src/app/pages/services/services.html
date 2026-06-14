@@ -1,0 +1,108 @@
+<!--
+  ARCHIVO: services.html
+
+  RESPONSABILIDAD:
+  Template de la página principal de servicios.
+  Muestra hero + grid de tarjetas enlazadas a cada sub-servicio.
+
+  DEBE CONTENER:
+  - Sección hero con título y descripción.
+  - Grid de tarjetas con icono, título, descripción y enlace.
+  - HTML semántico con aria-labels.
+
+  NO DEBE CONTENER:
+  - Contenido de sub-servicios individuales.
+  - Lógica compleja (solo interpolación y enlaces).
+
+  MODIFICAR CUANDO:
+  - Se agregue o elimine un servicio.
+  - Se actualicen textos o íconos.
+-->
+
+<section class="services-hero" aria-label="Encabezado de servicios">
+  <div class="hero-content">
+    <h1>Nuestros Servicios</h1>
+    <p>
+      Soluciones digitales integrales para llevar tu negocio al siguiente nivel.
+      Desde desarrollo web hasta marketing digital, cubrimos todo lo que necesitas.
+    </p>
+  </div>
+</section>
+
+<section class="services-grid" aria-label="Catálogo de servicios">
+  <div class="grid-container">
+
+    <article class="service-card">
+      <div class="card-icon">🌐</div>
+      <h2>Desarrollo Web</h2>
+      <p>Aplicaciones web modernas, rápidas y escalables con las últimas tecnologías.</p>
+      <a routerLink="web-development" class="card-link" aria-label="Ver detalles de Desarrollo Web">
+        Conocer más →
+      </a>
+    </article>
+
+    <article class="service-card">
+      <div class="card-icon">🛒</div>
+      <h2>Tiendas Online</h2>
+      <p>E-commerce optimizado para convertir visitantes en clientes satisfechos.</p>
+      <a routerLink="ecommerce" class="card-link" aria-label="Ver detalles de Tiendas Online">
+        Conocer más →
+      </a>
+    </article>
+
+    <article class="service-card">
+      <div class="card-icon">🎨</div>
+      <h2>Diseño UI/UX</h2>
+      <p>Interfaces intuitivas y experiencias de usuario que enamoran a tus clientes.</p>
+      <a routerLink="ui-ux-design" class="card-link" aria-label="Ver detalles de Diseño UI/UX">
+        Conocer más →
+      </a>
+    </article>
+
+    <article class="service-card">
+      <div class="card-icon">📱</div>
+      <h2>Redes Sociales</h2>
+      <p>Gestión profesional de tus redes sociales para maximizar tu alcance e interacción.</p>
+      <a routerLink="social-media-management" class="card-link" aria-label="Ver detalles de Redes Sociales">
+        Conocer más →
+      </a>
+    </article>
+
+    <article class="service-card">
+      <div class="card-icon">📈</div>
+      <h2>Marketing Digital</h2>
+      <p>Estrategias de marketing basadas en datos para hacer crecer tu negocio.</p>
+      <a routerLink="digital-marketing" class="card-link" aria-label="Ver detalles de Marketing Digital">
+        Conocer más →
+      </a>
+    </article>
+
+    <article class="service-card">
+      <div class="card-icon">✨</div>
+      <h2>Branding & Identidad Visual</h2>
+      <p>Crea una marca memorable que conecte emocionalmente con tu audiencia.</p>
+      <a routerLink="branding" class="card-link" aria-label="Ver detalles de Branding">
+        Conocer más →
+      </a>
+    </article>
+
+    <article class="service-card">
+      <div class="card-icon">🔍</div>
+      <h2>Optimización SEO</h2>
+      <p>Posiciona tu sitio en los primeros resultados de Google de forma orgánica.</p>
+      <a routerLink="seo" class="card-link" aria-label="Ver detalles de SEO">
+        Conocer más →
+      </a>
+    </article>
+
+    <article class="service-card">
+      <div class="card-icon">📣</div>
+      <h2>Publicidad Digital</h2>
+      <p>Campañas publicitarias en Google Ads, Meta Ads y más para resultados inmediatos.</p>
+      <a routerLink="advertising" class="card-link" aria-label="Ver detalles de Publicidad Digital">
+        Conocer más →
+      </a>
+    </article>
+
+  </div>
+</section>

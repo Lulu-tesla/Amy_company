@@ -1,0 +1,203 @@
+// ============================================================
+// ARCHIVO: _mixins.scss
+//
+// RESPONSABILIDAD:
+// Proveer mixins reutilizables para patrones CSS comunes.
+// Centraliza la lógica repetitiva de estilos en bloques
+// reutilizables que aceptan parámetros.
+//
+// DEBE CONTENER:
+// - Mixins de media queries responsive (respond-to)
+// - Mixins de layout (flex-center, grid-auto-fill)
+// - Mixins de efectos visuales (text-gradient, glass-effect)
+// - Mixins de interacción (hover-lift)
+// - Mixins de contenedor
+//
+// NO DEBE CONTENER:
+// - Variables (van en _variables.scss)
+// - Funciones SCSS (van en _functions.scss)
+// - Estilos directos (selectores CSS)
+// - Reglas @media sueltas
+//
+// MODIFICAR CUANDO:
+// - Se necesite un nuevo patrón CSS reutilizable
+// - Se actualice la lógica de responsive design
+// - Se agreguen nuevos efectos visuales globales
+//
+// EJEMPLO DE USO:
+// .mi-componente {
+//   @include flex-center;
+//   @include respond-to('tablet') { ... }
+//   @include hover-lift;
+// }
+// ============================================================
+
+@use 'variables' as *;
+@use 'functions' as *;
+
+// -----------------------------------------------------------
+// RESPONSIVE - Media queries por breakpoint
+// -----------------------------------------------------------
+
+/// Genera un media query min-width para el breakpoint indicado.
+/// @param {String} $breakpoint - Nombre del breakpoint (mobile, tablet, laptop, desktop)
+/// @example
+///   .header {
+///     padding: $spacing-sm;
+///     @include respond-to('tablet') {
+///       padding: $spacing-lg;
+///     }
+///   }
+@mixin respond-to($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (min-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  } @else {
+    @warn "Breakpoint '#{$breakpoint}' no encontrado en $breakpoints.";
+  }
+}
+
+/// Media query max-width para estilos mobile-first inversos.
+/// @param {String} $breakpoint - Nombre del breakpoint
+@mixin respond-below($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (max-width: (map-get($breakpoints, $breakpoint) - 1px)) {
+      @content;
+    }
+  } @else {
+    @warn "Breakpoint '#{$breakpoint}' no encontrado en $breakpoints.";
+  }
+}
+
+// -----------------------------------------------------------
+// LAYOUT - Flexbox y Grid
+// -----------------------------------------------------------
+
+/// Centra elementos con flexbox horizontal y verticalmente.
+/// @example
+///   .hero { @include flex-center; }
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/// Flexbox en columna centrado.
+@mixin flex-center-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/// Grid auto-fill con ancho mínimo configurable.
+/// Ideal para grids de cards o items repetitivos.
+/// @param {Length} $min-width [280px] - Ancho mínimo de cada columna
+/// @param {Length} $gap [$spacing-lg] - Espacio entre elementos
+/// @example
+///   .cards-grid { @include grid-auto-fill(300px); }
+@mixin grid-auto-fill($min-width: 280px, $gap: $spacing-lg) {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax($min-width, 1fr));
+  gap: $gap;
+}
+
+// -----------------------------------------------------------
+// EFECTOS VISUALES
+// -----------------------------------------------------------
+
+/// Aplica un gradiente como color de texto.
+/// @param {Gradient} $gradient [$gradient-primary] - Gradiente CSS
+/// @example
+///   .titulo { @include text-gradient; }
+@mixin text-gradient($gradient: $gradient-primary) {
+  background: $gradient;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/// Efecto glassmorphism (vidrio esmerilado).
+/// @param {Number} $blur [10px] - Intensidad del desenfoque
+/// @param {Number} $opacity [0.15] - Opacidad del fondo blanco
+/// @example
+///   .card-glass { @include glass-effect(20px, 0.1); }
+@mixin glass-effect($blur: 10px, $opacity: 0.15) {
+  background: rgba($color-white, $opacity);
+  backdrop-filter: blur($blur);
+  -webkit-backdrop-filter: blur($blur);
+  border: 1px solid rgba($color-white, 0.2);
+}
+
+/// Efecto de elevación al hacer hover.
+/// Eleva el elemento con translate y sombra.
+/// @param {Length} $distance [-5px] - Distancia de elevación
+/// @example
+///   .card { @include hover-lift; }
+@mixin hover-lift($distance: -5px) {
+  transition: transform $transition-base, box-shadow $transition-base;
+
+  &:hover {
+    transform: translateY($distance);
+    box-shadow: $shadow-lg;
+  }
+}
+
+// -----------------------------------------------------------
+// CONTENEDOR
+// -----------------------------------------------------------
+
+/// Contenedor centrado con padding lateral y ancho máximo.
+/// @param {Length} $max-width [$container-xl] - Ancho máximo
+/// @param {Length} $padding [$container-padding] - Padding horizontal
+/// @example
+///   .section { @include container(1200px); }
+@mixin container($max-width: $container-xl, $padding: $container-padding) {
+  width: 100%;
+  max-width: $max-width;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $padding;
+  padding-right: $padding;
+}
+
+// -----------------------------------------------------------
+// UTILIDADES ADICIONALES
+// -----------------------------------------------------------
+
+/// Trunca texto con puntos suspensivos.
+/// @param {Number} $lines [1] - Número de líneas visibles
+@mixin truncate($lines: 1) {
+  @if $lines == 1 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  } @else {
+    display: -webkit-box;
+    -webkit-line-clamp: $lines;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+/// Oculta visualmente pero mantiene accesible para lectores de pantalla.
+@mixin visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/// Estilo de foco accesible.
+@mixin focus-ring($color: $color-primary) {
+  &:focus-visible {
+    outline: 2px solid $color;
+    outline-offset: 2px;
+  }
+}

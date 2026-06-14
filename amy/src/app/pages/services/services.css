@@ -1,0 +1,121 @@
+/*
+ * ARCHIVO: services.css
+ *
+ * RESPONSABILIDAD:
+ * Estilos de la página principal de listado de servicios.
+ *
+ * DEBE CONTENER:
+ * - Estilos del hero de servicios.
+ * - Grid responsivo de tarjetas de servicio.
+ * - Estilos de hover y transiciones.
+ *
+ * NO DEBE CONTENER:
+ * - Estilos de sub-servicios individuales.
+ * - Variables globales (usar las de :root).
+ *
+ * MODIFICAR CUANDO:
+ * - Se cambie el layout del grid.
+ * - Se actualicen colores o espaciados.
+ */
+
+:host {
+  display: block;
+}
+
+.services-hero {
+  padding: 5rem 2rem 3rem;
+  text-align: center;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  color: #f8fafc;
+}
+
+.hero-content {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.hero-content h1 {
+  font-size: 2.75rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.hero-content p {
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: #94a3b8;
+}
+
+.services-grid {
+  padding: 4rem 2rem;
+  background-color: #f8fafc;
+}
+
+.grid-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.service-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 2rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.service-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+}
+
+.card-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.service-card h2 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 0.75rem;
+}
+
+.service-card p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #475569;
+  flex: 1;
+}
+
+.card-link {
+  display: inline-block;
+  margin-top: 1.25rem;
+  color: #2563eb;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.card-link:hover {
+  color: #1d4ed8;
+}
+
+@media (max-width: 768px) {
+  .services-hero {
+    padding: 3rem 1.5rem 2rem;
+  }
+
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .services-grid {
+    padding: 2rem 1rem;
+  }
+}

@@ -1,0 +1,35 @@
+<!--
+  ARCHIVO: contact-preview.html
+
+  RESPONSABILIDAD:
+  Template de la sección CTA de contacto.
+  Invita al usuario a iniciar una conversación con Amy Developers.
+
+  DEBE CONTENER:
+  - Título 'Hablemos de tu proyecto'.
+  - Texto motivacional.
+  - Botón de contacto con enlace a /contact.
+
+  NO DEBE CONTENER:
+  - Formulario completo de contacto.
+  - Datos de contacto extensos.
+
+  MODIFICAR CUANDO:
+  - Se cambie el mensaje CTA.
+  - Se integre un formulario breve inline.
+
+  EJEMPLO DE USO:
+  Renderizado automáticamente por el componente ContactPreview.
+-->
+<section class="contact-preview" aria-label="Llamada a la acción para contactar">
+  <div class="contact-preview__container">
+    <h2 class="contact-preview__title">Hablemos de tu proyecto</h2>
+    <p class="contact-preview__text">
+      ¿Tienes una idea en mente? Cuéntanos sobre tu proyecto y
+      juntos encontraremos la mejor solución digital para tu negocio.
+    </p>
+    <a routerLink="/contact" class="contact-preview__btn" aria-label="Ir a la página de contacto">
+      Contactar ahora
+    </a>
+  </div>
+</section>

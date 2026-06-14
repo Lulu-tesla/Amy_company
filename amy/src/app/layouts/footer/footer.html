@@ -1,1 +1,29 @@
-<p>footer works!</p>
+<!--
+  ARCHIVO: footer.html
+  RESPONSABILIDAD: Plantilla del Footer
+-->
+<footer class="footer">
+  <div class="container">
+    <div class="grid">
+      <div class="col">
+        <h3>Amy Developers</h3>
+        <p>Transformamos ideas en experiencias digitales excepcionales.</p>
+      </div>
+      <div class="col">
+        <h3>Enlaces</h3>
+        <a routerLink="/">Inicio</a>
+        <a routerLink="/about">Nosotros</a>
+        <a routerLink="/services">Servicios</a>
+        <a routerLink="/contact">Contacto</a>
+      </div>
+      <div class="col">
+        <h3>Legal</h3>
+        <a routerLink="/privacy-policy">Política de Privacidad</a>
+        <a routerLink="/terms-of-service">Términos de Servicio</a>
+      </div>
+    </div>
+    <div class="bottom-bar">
+      <p>&copy; {{ currentYear }} Amy Developers. Todos los derechos reservados.</p>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,36 @@
+<!--
+  ARCHIVO: modal.html
+
+  RESPONSABILIDAD:
+  Template del componente Modal. Muestra un overlay con una ventana modal centrada.
+  Incluye título, contenido proyectado y botón de cierre.
+
+  DEBE CONTENER:
+  - Backdrop con evento de clic
+  - Contenedor del modal con título y botón cerrar
+  - ng-content para contenido personalizado
+
+  NO DEBE CONTENER:
+  - Contenido específico (se proyecta via ng-content)
+  - Estilos inline
+-->
+
+@if (isOpen()) {
+  <div class="modal__backdrop" (click)="onBackdropClick($event)">
+    <div class="modal__container" role="dialog" aria-modal="true" [attr.aria-label]="title()">
+      <div class="modal__header">
+        <h3 class="modal__title">{{ title() }}</h3>
+        <button class="modal__close" (click)="close()" aria-label="Cerrar modal">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="modal__body">
+        <ng-content />
+      </div>
+    </div>
+  </div>
+}

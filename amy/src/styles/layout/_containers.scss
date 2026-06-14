@@ -1,0 +1,92 @@
+// ============================================================
+// ARCHIVO: _containers.scss
+//
+// RESPONSABILIDAD:
+// Definir clases de contenedor para centrar y limitar el ancho
+// del contenido en la página. Provee variantes para diferentes
+// anchos máximos.
+//
+// DEBE CONTENER:
+// - .container (ancho estándar: 1280px)
+// - .container-sm (ancho reducido: 640px)
+// - .container-lg (ancho amplio: 1024px)
+// - .container-fluid (ancho completo sin límite)
+// - Secciones con padding vertical
+//
+// NO DEBE CONTENER:
+// - Grid o columnas (van en _grid.scss)
+// - Estilos de componentes
+// - Estilos tipográficos
+// - Breakpoints personalizados (usar variables)
+//
+// MODIFICAR CUANDO:
+// - Se necesite un nuevo tamaño de contenedor
+// - Se ajuste el padding lateral por defecto
+// - Se cambie el ancho máximo estándar
+//
+// EJEMPLO DE USO:
+// <section class="section">
+//   <div class="container">
+//     <h2>Título de la sección</h2>
+//   </div>
+// </section>
+// ============================================================
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+// -----------------------------------------------------------
+// CONTENEDORES
+// -----------------------------------------------------------
+
+/// Contenedor estándar (1280px max-width).
+/// Centrado horizontalmente con padding lateral.
+.container {
+  @include container($container-xl);
+}
+
+/// Contenedor pequeño (640px max-width).
+/// Ideal para contenido de texto, formularios.
+.container-sm {
+  @include container($container-sm);
+}
+
+/// Contenedor grande (1024px max-width).
+/// Ideal para contenido intermedio.
+.container-lg {
+  @include container($container-lg);
+}
+
+/// Contenedor fluido (sin max-width).
+/// Ocupa todo el ancho con padding lateral.
+.container-fluid {
+  width: 100%;
+  padding-left: $container-padding;
+  padding-right: $container-padding;
+}
+
+// -----------------------------------------------------------
+// SECCIONES
+// -----------------------------------------------------------
+
+/// Sección con padding vertical para separar bloques de contenido.
+.section {
+  padding-top: $spacing-3xl;
+  padding-bottom: $spacing-3xl;
+
+  @include respond-to('tablet') {
+    padding-top: $spacing-4xl;
+    padding-bottom: $spacing-4xl;
+  }
+}
+
+/// Sección con padding reducido.
+.section-sm {
+  padding-top: $spacing-2xl;
+  padding-bottom: $spacing-2xl;
+
+  @include respond-to('tablet') {
+    padding-top: $spacing-3xl;
+    padding-bottom: $spacing-3xl;
+  }
+}

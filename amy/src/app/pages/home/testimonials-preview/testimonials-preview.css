@@ -1,0 +1,132 @@
+/*
+ * ARCHIVO: testimonials-preview.css
+ *
+ * RESPONSABILIDAD:
+ * Estilos de la sección de testimonios de clientes.
+ * Define el layout de tarjetas, citas y datos del autor.
+ *
+ * DEBE CONTENER:
+ * - Grid de tarjetas de testimonios.
+ * - Estilos de blockquote y citas.
+ * - Layout del avatar y datos del autor.
+ * - Responsividad.
+ *
+ * NO DEBE CONTENER:
+ * - Estilos globales o de otras secciones.
+ *
+ * MODIFICAR CUANDO:
+ * - Se cambie el diseño de las tarjetas de testimonios.
+ * - Se integre un carousel.
+ */
+
+.testimonials-preview {
+  padding: 5rem 1.5rem;
+  background-color: #fafafa;
+}
+
+.testimonials-preview__container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.testimonials-preview__header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.testimonials-preview__title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 0.75rem;
+}
+
+.testimonials-preview__subtitle {
+  font-size: 1.1rem;
+  color: #64748b;
+  max-width: 550px;
+  margin: 0 auto;
+}
+
+.testimonials-preview__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.testimonials-preview__card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 2rem;
+  border: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: box-shadow 0.2s;
+}
+
+.testimonials-preview__card:hover {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+}
+
+.testimonials-preview__quote {
+  margin: 0 0 1.5rem;
+}
+
+.testimonials-preview__quote p {
+  font-size: 0.95rem;
+  color: #475569;
+  line-height: 1.7;
+  font-style: italic;
+}
+
+.testimonials-preview__author {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding-top: 1rem;
+  border-top: 1px solid #f1f5f9;
+}
+
+.testimonials-preview__avatar {
+  font-size: 2rem;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #f1f5f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.testimonials-preview__author-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.testimonials-preview__name {
+  font-size: 0.925rem;
+  color: #1e293b;
+}
+
+.testimonials-preview__role {
+  font-size: 0.8rem;
+  color: #94a3b8;
+}
+
+@media (max-width: 768px) {
+  .testimonials-preview__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .testimonials-preview__title {
+    font-size: 1.75rem;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .testimonials-preview__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

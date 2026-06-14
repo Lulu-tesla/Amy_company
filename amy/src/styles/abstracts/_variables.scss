@@ -1,0 +1,200 @@
+// ============================================================
+// ARCHIVO: _variables.scss
+//
+// RESPONSABILIDAD:
+// Definir todos los tokens de diseño (design tokens) de la
+// aplicación Amy Developers. Centraliza colores, tipografía,
+// espaciado, breakpoints, sombras, z-index y transiciones.
+//
+// DEBE CONTENER:
+// - Variables de colores (primario, secundario, acento, etc.)
+// - Escala tipográfica y familia de fuentes
+// - Escala de espaciado (spacing)
+// - Breakpoints responsive
+// - Sombras (box-shadow)
+// - Escala de z-index
+// - Transiciones y animaciones base
+// - Bordes y radios de borde
+//
+// NO DEBE CONTENER:
+// - Estilos directos (selectores CSS)
+// - Mixins o funciones (van en sus propios archivos)
+// - Reglas @media
+// - Importaciones de otros archivos
+//
+// MODIFICAR CUANDO:
+// - Se actualice la paleta de colores de la marca
+// - Se agregue un nuevo breakpoint
+// - Se modifique la escala tipográfica
+// - Se necesiten nuevos tokens de diseño
+//
+// EJEMPLO DE USO:
+// color: $color-primary;
+// font-family: $font-primary;
+// padding: $spacing-md;
+// border-radius: $radius-md;
+// ============================================================
+
+// -----------------------------------------------------------
+// COLORES - Paleta principal
+// -----------------------------------------------------------
+$color-primary: #6C63FF;
+$color-secondary: #FF6584;
+$color-accent: #00D9FF;
+$color-dark: #0D1117;
+$color-light: #F8F9FA;
+
+// Variaciones de color primario
+$color-primary-light: lighten($color-primary, 15%);
+$color-primary-dark: darken($color-primary, 15%);
+
+// Variaciones de color secundario
+$color-secondary-light: lighten($color-secondary, 15%);
+$color-secondary-dark: darken($color-secondary, 15%);
+
+// Colores neutros
+$color-white: #FFFFFF;
+$color-black: #000000;
+$color-gray-100: #F8F9FA;
+$color-gray-200: #E9ECEF;
+$color-gray-300: #DEE2E6;
+$color-gray-400: #CED4DA;
+$color-gray-500: #ADB5BD;
+$color-gray-600: #6C757D;
+$color-gray-700: #495057;
+$color-gray-800: #343A40;
+$color-gray-900: #212529;
+
+// Colores semánticos
+$color-success: #28A745;
+$color-warning: #FFC107;
+$color-danger: #DC3545;
+$color-info: #17A2B8;
+
+// Gradientes
+$gradient-primary: linear-gradient(135deg, $color-primary, $color-accent);
+$gradient-secondary: linear-gradient(135deg, $color-secondary, $color-primary);
+$gradient-dark: linear-gradient(135deg, $color-dark, lighten($color-dark, 10%));
+
+// -----------------------------------------------------------
+// TIPOGRAFÍA
+// -----------------------------------------------------------
+$font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+$font-mono: 'Fira Code', 'Consolas', 'Monaco', monospace;
+
+// Escala tipográfica (en px, se convierten con la función rem())
+$font-size-xs: 12px;
+$font-size-sm: 14px;
+$font-size-base: 16px;
+$font-size-md: 18px;
+$font-size-lg: 20px;
+$font-size-xl: 24px;
+$font-size-2xl: 30px;
+$font-size-3xl: 36px;
+$font-size-4xl: 48px;
+$font-size-5xl: 60px;
+$font-size-6xl: 72px;
+
+// Peso de fuente
+$font-weight-light: 300;
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+$font-weight-extrabold: 800;
+
+// Interlineado
+$line-height-tight: 1.2;
+$line-height-normal: 1.5;
+$line-height-relaxed: 1.75;
+
+// Espaciado entre letras
+$letter-spacing-tight: -0.025em;
+$letter-spacing-normal: 0;
+$letter-spacing-wide: 0.025em;
+$letter-spacing-wider: 0.05em;
+$letter-spacing-widest: 0.1em;
+
+// -----------------------------------------------------------
+// ESPACIADO (Escala de 4px)
+// -----------------------------------------------------------
+$spacing-0: 0;
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-md: 16px;
+$spacing-lg: 24px;
+$spacing-xl: 32px;
+$spacing-2xl: 48px;
+$spacing-3xl: 64px;
+$spacing-4xl: 96px;
+$spacing-5xl: 128px;
+
+// -----------------------------------------------------------
+// BREAKPOINTS
+// -----------------------------------------------------------
+$breakpoint-mobile: 480px;
+$breakpoint-tablet: 768px;
+$breakpoint-laptop: 1024px;
+$breakpoint-desktop: 1280px;
+
+// Mapa de breakpoints para el mixin respond-to()
+$breakpoints: (
+  'mobile': $breakpoint-mobile,
+  'tablet': $breakpoint-tablet,
+  'laptop': $breakpoint-laptop,
+  'desktop': $breakpoint-desktop
+);
+
+// -----------------------------------------------------------
+// BORDES Y RADIOS
+// -----------------------------------------------------------
+$radius-sm: 4px;
+$radius-md: 8px;
+$radius-lg: 12px;
+$radius-xl: 16px;
+$radius-2xl: 24px;
+$radius-full: 9999px;
+
+$border-width: 1px;
+$border-color: $color-gray-300;
+
+// -----------------------------------------------------------
+// SOMBRAS
+// -----------------------------------------------------------
+$shadow-sm: 0 1px 2px rgba($color-black, 0.05);
+$shadow-md: 0 4px 6px rgba($color-black, 0.07);
+$shadow-lg: 0 10px 15px rgba($color-black, 0.1);
+$shadow-xl: 0 20px 25px rgba($color-black, 0.12);
+$shadow-2xl: 0 25px 50px rgba($color-black, 0.15);
+$shadow-inner: inset 0 2px 4px rgba($color-black, 0.06);
+$shadow-glow-primary: 0 0 20px rgba($color-primary, 0.3);
+$shadow-glow-accent: 0 0 20px rgba($color-accent, 0.3);
+
+// -----------------------------------------------------------
+// Z-INDEX - Escala ordenada
+// -----------------------------------------------------------
+$z-dropdown: 100;
+$z-sticky: 200;
+$z-fixed: 300;
+$z-modal-backdrop: 400;
+$z-modal: 500;
+$z-popover: 600;
+$z-tooltip: 700;
+$z-toast: 800;
+
+// -----------------------------------------------------------
+// TRANSICIONES
+// -----------------------------------------------------------
+$transition-fast: 150ms ease;
+$transition-base: 300ms ease;
+$transition-slow: 500ms ease;
+$transition-bounce: 500ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+// -----------------------------------------------------------
+// CONTENEDORES
+// -----------------------------------------------------------
+$container-sm: 640px;
+$container-md: 768px;
+$container-lg: 1024px;
+$container-xl: 1280px;
+$container-padding: $spacing-md;

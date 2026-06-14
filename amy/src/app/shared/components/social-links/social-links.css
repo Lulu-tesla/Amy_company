@@ -1,0 +1,23 @@
+/*
+  ARCHIVO: social-links.css
+  RESPONSABILIDAD: Estilos de Social Links
+*/
+.social-container {
+  display: flex;
+  gap: 1rem;
+}
+
+.social-link {
+  color: #6C63FF;
+  text-decoration: none;
+  font-weight: 500;
+  transition: opacity 0.2s;
+}
+
+.social-link:hover {
+  opacity: 0.8;
+}
+
+.social-link.sm { font-size: 0.875rem; }
+.social-link.md { font-size: 1rem; }
+.social-link.lg { font-size: 1.25rem; }

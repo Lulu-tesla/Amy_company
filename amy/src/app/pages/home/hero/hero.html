@@ -1,0 +1,54 @@
+<!--
+  ARCHIVO: hero.html
+
+  RESPONSABILIDAD:
+  Template de la sección Hero de la página de inicio.
+  Presenta el mensaje principal de Amy Developers con CTAs.
+
+  DEBE CONTENER:
+  - Título principal con mensaje de transformación digital.
+  - Subtítulo descriptivo de servicios.
+  - Dos botones CTA: Ver Portafolio y Contactar.
+  - Área placeholder para imagen o animación.
+
+  NO DEBE CONTENER:
+  - Navbar, footer u otros componentes de layout.
+  - Scripts o lógica compleja.
+
+  MODIFICAR CUANDO:
+  - Se actualice el mensaje principal de la agencia.
+  - Se integre contenido visual real (imágenes, animaciones).
+  - Se cambien los destinos de los CTAs.
+
+  EJEMPLO DE USO:
+  Renderizado automáticamente por el componente Hero.
+-->
+<section class="hero" aria-label="Sección principal de bienvenida">
+  <div class="hero__container">
+    <div class="hero__content">
+      <h1 class="hero__title">
+        Transformamos ideas en experiencias digitales
+      </h1>
+      <p class="hero__subtitle">
+        En Amy Developers, creamos soluciones digitales que impulsan tu negocio.
+        Desde desarrollo web y e-commerce hasta branding, SEO y marketing digital,
+        somos tu socio estratégico para conquistar el mundo digital.
+      </p>
+      <div class="hero__actions">
+        <a routerLink="/portfolio" class="hero__btn hero__btn--primary" aria-label="Ver nuestro portafolio de proyectos">
+          Ver Portafolio
+        </a>
+        <a routerLink="/contact" class="hero__btn hero__btn--secondary" aria-label="Contactar con Amy Developers">
+          Contactar
+        </a>
+      </div>
+    </div>
+
+    <div class="hero__visual" aria-hidden="true">
+      <div class="hero__image-placeholder">
+        <span class="hero__placeholder-icon">🚀</span>
+        <p class="hero__placeholder-text">Imagen / Animación Hero</p>
+      </div>
+    </div>
+  </div>
+</section>

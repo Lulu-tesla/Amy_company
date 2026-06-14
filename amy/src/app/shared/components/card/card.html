@@ -1,0 +1,50 @@
+<!--
+  ARCHIVO: card.html
+
+  RESPONSABILIDAD:
+  Template del componente Card. Muestra una tarjeta con imagen, ícono, título,
+  descripción y contenido proyectado via ng-content.
+
+  DEBE CONTENER:
+  - Imagen condicional si se proporcionó image
+  - Ícono condicional si se proporcionó icon
+  - Título y descripción
+  - Slot de ng-content para contenido personalizado
+
+  NO DEBE CONTENER:
+  - Lógica compleja en el template
+  - Estilos inline
+-->
+
+<article class="card">
+  @if (image()) {
+    <div class="card__image">
+      <img [src]="image()" [alt]="title()" loading="lazy" />
+    </div>
+  }
+
+  <div class="card__body">
+    @if (icon()) {
+      <span class="card__icon">{{ icon() }}</span>
+    }
+
+    <h3 class="card__title">{{ title() }}</h3>
+
+    @if (description()) {
+      <p class="card__description">{{ description() }}</p>
+    }
+
+    <div class="card__content">
+      <ng-content />
+    </div>
+
+    @if (link()) {
+      <a [href]="link()" class="card__link">
+        Ver más
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </a>
+    }
+  </div>
+</article>

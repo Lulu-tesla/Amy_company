@@ -1,0 +1,54 @@
+<!--
+  ARCHIVO: portfolio-preview.html
+
+  RESPONSABILIDAD:
+  Template de la vista previa del portafolio en la página de inicio.
+  Presenta los proyectos destacados de Amy Developers.
+
+  DEBE CONTENER:
+  - Título de sección 'Proyectos Destacados'.
+  - Tarjetas de proyectos con imagen placeholder, título, categoría.
+  - Enlace al portafolio completo.
+
+  NO DEBE CONTENER:
+  - Galería completa de proyectos.
+  - Filtros o paginación.
+
+  MODIFICAR CUANDO:
+  - Se integren imágenes reales.
+  - Se cambie el layout de las tarjetas.
+
+  EJEMPLO DE USO:
+  Renderizado automáticamente por el componente PortfolioPreview.
+-->
+<section class="portfolio-preview" aria-label="Proyectos destacados de Amy Developers">
+  <div class="portfolio-preview__container">
+    <header class="portfolio-preview__header">
+      <h2 class="portfolio-preview__title">Proyectos Destacados</h2>
+      <p class="portfolio-preview__subtitle">
+        Conoce algunos de los proyectos que han impulsado a nuestros clientes.
+      </p>
+    </header>
+
+    <div class="portfolio-preview__grid">
+      @for (project of projects(); track project.title) {
+        <article class="portfolio-preview__card">
+          <div class="portfolio-preview__image" aria-hidden="true">
+            <span class="portfolio-preview__image-icon">{{ project.imagePlaceholder }}</span>
+          </div>
+          <div class="portfolio-preview__info">
+            <span class="portfolio-preview__category">{{ project.category }}</span>
+            <h3 class="portfolio-preview__project-title">{{ project.title }}</h3>
+            <p class="portfolio-preview__description">{{ project.description }}</p>
+          </div>
+        </article>
+      }
+    </div>
+
+    <div class="portfolio-preview__footer">
+      <a routerLink="/portfolio" class="portfolio-preview__link" aria-label="Ver el portafolio completo">
+        Ver portafolio completo →
+      </a>
+    </div>
+  </div>
+</section>

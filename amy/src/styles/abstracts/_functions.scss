@@ -1,0 +1,79 @@
+// ============================================================
+// ARCHIVO: _functions.scss
+//
+// RESPONSABILIDAD:
+// Proveer funciones SCSS puras para cálculos y transformaciones
+// de valores. Estas funciones retornan valores y no generan
+// CSS directamente.
+//
+// DEBE CONTENER:
+// - Funciones de conversión de unidades (px a rem, px a em)
+// - Funciones de manipulación de color
+// - Funciones matemáticas auxiliares
+//
+// NO DEBE CONTENER:
+// - Variables (van en _variables.scss)
+// - Mixins (van en _mixins.scss)
+// - Estilos directos (selectores CSS)
+// - Lógica de layout o responsive
+//
+// MODIFICAR CUANDO:
+// - Se necesite una nueva función de cálculo
+// - Se actualice la base para conversiones de unidades
+// - Se agreguen helpers de color personalizados
+//
+// EJEMPLO DE USO:
+// font-size: rem(18);        // -> 1.125rem
+// padding: em(24);           // -> 1.5em
+// color: color-opacity(#6C63FF, 0.5); // -> rgba(108, 99, 255, 0.5)
+// ============================================================
+
+// -----------------------------------------------------------
+// CONVERSIÓN DE UNIDADES
+// -----------------------------------------------------------
+
+/// Convierte un valor en píxeles a rem.
+/// Base: 16px = 1rem (estándar del navegador).
+/// @param {Number} $px - Valor en píxeles (sin unidad o con px)
+/// @return {Number} - Valor en rem
+/// @example
+///   font-size: rem(18);    // 1.125rem
+///   padding: rem(32);      // 2rem
+@function rem($px) {
+  @if unitless($px) {
+    @return calc($px / 16) * 1rem;
+  } @else {
+    @warn "El valor pasado a rem() debe ser un número sin unidad. Recibido: #{$px}";
+    @return $px;
+  }
+}
+
+/// Convierte un valor en píxeles a em.
+/// Base: 16px = 1em (relativo al font-size del padre).
+/// @param {Number} $px - Valor en píxeles (sin unidad)
+/// @return {Number} - Valor en em
+/// @example
+///   margin-bottom: em(24);  // 1.5em
+@function em($px) {
+  @if unitless($px) {
+    @return calc($px / 16) * 1em;
+  } @else {
+    @warn "El valor pasado a em() debe ser un número sin unidad. Recibido: #{$px}";
+    @return $px;
+  }
+}
+
+// -----------------------------------------------------------
+// MANIPULACIÓN DE COLOR
+// -----------------------------------------------------------
+
+/// Aplica opacidad a un color, retornando rgba.
+/// @param {Color} $color - Color base
+/// @param {Number} $opacity - Valor de opacidad (0 a 1)
+/// @return {Color} - Color con opacidad aplicada
+/// @example
+///   background: color-opacity(#6C63FF, 0.2);  // rgba(108, 99, 255, 0.2)
+///   border-color: color-opacity($color-dark, 0.1);
+@function color-opacity($color, $opacity) {
+  @return rgba($color, $opacity);
+}

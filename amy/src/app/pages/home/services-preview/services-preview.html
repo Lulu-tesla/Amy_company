@@ -1,0 +1,49 @@
+<!--
+  ARCHIVO: services-preview.html
+
+  RESPONSABILIDAD:
+  Template de la vista previa de servicios en la página de inicio.
+  Muestra una cuadrícula de servicios con íconos y descripciones.
+
+  DEBE CONTENER:
+  - Título de sección 'Nuestros Servicios'.
+  - Grid de tarjetas de servicios.
+  - Enlace a la página completa de servicios.
+
+  NO DEBE CONTENER:
+  - Detalles extensos de cada servicio.
+  - Componentes de otras secciones.
+
+  MODIFICAR CUANDO:
+  - Se cambie la estructura visual de las tarjetas.
+  - Se agreguen elementos interactivos.
+
+  EJEMPLO DE USO:
+  Renderizado automáticamente por el componente ServicesPreview.
+-->
+<section class="services-preview" aria-label="Vista previa de nuestros servicios">
+  <div class="services-preview__container">
+    <header class="services-preview__header">
+      <h2 class="services-preview__title">Nuestros Servicios</h2>
+      <p class="services-preview__subtitle">
+        Soluciones digitales integrales para impulsar tu negocio al siguiente nivel.
+      </p>
+    </header>
+
+    <div class="services-preview__grid">
+      @for (service of services(); track service.title) {
+        <article class="services-preview__card">
+          <span class="services-preview__icon" aria-hidden="true">{{ service.icon }}</span>
+          <h3 class="services-preview__card-title">{{ service.title }}</h3>
+          <p class="services-preview__card-description">{{ service.description }}</p>
+        </article>
+      }
+    </div>
+
+    <div class="services-preview__footer">
+      <a routerLink="/services" class="services-preview__link" aria-label="Ver todos nuestros servicios">
+        Ver todos los servicios →
+      </a>
+    </div>
+  </div>
+</section>

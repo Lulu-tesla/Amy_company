@@ -1,0 +1,101 @@
+/*
+ * ARCHIVO: stats-preview.css
+ *
+ * RESPONSABILIDAD:
+ * Estilos de la sección de estadísticas de la agencia.
+ * Define el layout de contadores y sus valores.
+ *
+ * DEBE CONTENER:
+ * - Grid horizontal de métricas.
+ * - Tipografía grande para los valores.
+ * - Responsividad para móviles.
+ *
+ * NO DEBE CONTENER:
+ * - Estilos globales o de otras secciones.
+ *
+ * MODIFICAR CUANDO:
+ * - Se cambie el diseño de los contadores.
+ * - Se integren animaciones.
+ */
+
+.stats-preview {
+  padding: 4rem 1.5rem;
+  background: linear-gradient(135deg, #7c3aed 0%, #a78bfa 100%);
+  color: #ffffff;
+}
+
+.stats-preview__container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.stats-preview__header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.stats-preview__title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.stats-preview__subtitle {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.stats-preview__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+.stats-preview__item {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 2rem 1rem;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  transition: background 0.2s;
+}
+
+.stats-preview__item:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.stats-preview__icon {
+  font-size: 2rem;
+}
+
+.stats-preview__value {
+  font-size: 2.75rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.stats-preview__label {
+  font-size: 1rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+@media (max-width: 768px) {
+  .stats-preview__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .stats-preview__value {
+    font-size: 2rem;
+  }
+
+  .stats-preview__title {
+    font-size: 1.75rem;
+  }
+}

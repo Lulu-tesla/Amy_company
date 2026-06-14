@@ -1,0 +1,50 @@
+<!--
+  ARCHIVO: button.html
+
+  RESPONSABILIDAD:
+  Template del componente Button. Renderiza un <a> si se proporcionó href,
+  o un <button> en caso contrario. Aplica clases CSS dinámicas según variant y size.
+
+  DEBE CONTENER:
+  - Condicional @if para elegir entre <a> y <button>
+  - Clases dinámicas para variant y size
+  - Atributos de accesibilidad
+
+  NO DEBE CONTENER:
+  - Lógica compleja o llamadas a métodos pesados
+  - Estilos inline
+-->
+
+@if (href()) {
+  <a
+    [href]="href()"
+    class="btn"
+    [class.btn--primary]="variant() === 'primary'"
+    [class.btn--secondary]="variant() === 'secondary'"
+    [class.btn--outline]="variant() === 'outline'"
+    [class.btn--ghost]="variant() === 'ghost'"
+    [class.btn--sm]="size() === 'sm'"
+    [class.btn--md]="size() === 'md'"
+    [class.btn--lg]="size() === 'lg'"
+    [class.btn--disabled]="disabled()"
+    [attr.aria-disabled]="disabled()"
+    [attr.tabindex]="disabled() ? -1 : 0"
+  >
+    {{ label() }}
+  </a>
+} @else {
+  <button
+    class="btn"
+    [type]="type()"
+    [disabled]="disabled()"
+    [class.btn--primary]="variant() === 'primary'"
+    [class.btn--secondary]="variant() === 'secondary'"
+    [class.btn--outline]="variant() === 'outline'"
+    [class.btn--ghost]="variant() === 'ghost'"
+    [class.btn--sm]="size() === 'sm'"
+    [class.btn--md]="size() === 'md'"
+    [class.btn--lg]="size() === 'lg'"
+  >
+    {{ label() }}
+  </button>
+}

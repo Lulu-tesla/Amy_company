@@ -1,0 +1,46 @@
+<!--
+  ARCHIVO: process-preview.html
+
+  RESPONSABILIDAD:
+  Template de la vista previa del proceso de trabajo.
+  Visualiza las 4 fases del proceso de Amy Developers.
+
+  DEBE CONTENER:
+  - Título de sección 'Nuestro Proceso'.
+  - Tarjetas numeradas de cada paso.
+  - Ícono, título y descripción de cada fase.
+
+  NO DEBE CONTENER:
+  - Detalles extensos de cada fase.
+  - Componentes de otras secciones.
+
+  MODIFICAR CUANDO:
+  - Se cambien las fases del proceso.
+  - Se agreguen animaciones o timeline visual.
+
+  EJEMPLO DE USO:
+  Renderizado automáticamente por el componente ProcessPreview.
+-->
+<section class="process-preview" aria-label="Nuestro proceso de trabajo">
+  <div class="process-preview__container">
+    <header class="process-preview__header">
+      <h2 class="process-preview__title">Nuestro Proceso</h2>
+      <p class="process-preview__subtitle">
+        Un enfoque estructurado para llevar tu proyecto del concepto al éxito.
+      </p>
+    </header>
+
+    <div class="process-preview__steps">
+      @for (step of steps(); track step.number) {
+        <article class="process-preview__step">
+          <div class="process-preview__step-number" aria-hidden="true">
+            {{ step.number }}
+          </div>
+          <span class="process-preview__step-icon" aria-hidden="true">{{ step.icon }}</span>
+          <h3 class="process-preview__step-title">{{ step.title }}</h3>
+          <p class="process-preview__step-description">{{ step.description }}</p>
+        </article>
+      }
+    </div>
+  </div>
+</section>

@@ -1,14 +1,31 @@
-import { Component, signal } from '@angular/core';
+/**
+ * ARCHIVO: app.ts
+ *
+ * RESPONSABILIDAD:
+ * Componente raíz de la aplicación Angular.
+ * Punto de entrada visual. Solo renderiza el RouterOutlet.
+ *
+ * DEBE CONTENER:
+ * - RouterOutlet para renderizar las rutas.
+ * - Estilos globales mínimos del host.
+ *
+ * NO DEBE CONTENER:
+ * - Navbar, Footer u otros layouts (eso lo maneja MainLayout).
+ * - Lógica de negocio.
+ * - Llamadas HTTP.
+ * - Estado global.
+ *
+ * MODIFICAR CUANDO:
+ * - Se necesite un wrapper global (ej: toast notifications).
+ * - Se cambie la estrategia de layout raíz.
+ */
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { Navbar } from './layouts/navbar/navbar';
-import { Footer } from './layouts/footer/footer';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Navbar, Footer],
+  imports: [RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
-export class App {
-  protected readonly title = signal('amy');
-}
+export class App {}

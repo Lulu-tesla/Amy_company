@@ -1,0 +1,86 @@
+<!--
+  ARCHIVO: web-development.html
+
+  RESPONSABILIDAD:
+  Template del servicio de Desarrollo Web.
+
+  DEBE CONTENER:
+  - Hero con título y descripción.
+  - Lista de características.
+  - Sección de tecnologías.
+  - CTA de contacto.
+
+  NO DEBE CONTENER:
+  - Información de otros servicios.
+
+  MODIFICAR CUANDO:
+  - Se actualicen tecnologías o beneficios.
+-->
+
+<section class="service-hero" aria-label="Servicio de Desarrollo Web">
+  <div class="hero-content">
+    <a routerLink="/services" class="back-link" aria-label="Volver a servicios">← Todos los servicios</a>
+    <h1>Desarrollo Web</h1>
+    <p>
+      Creamos aplicaciones web modernas, rápidas y escalables que impulsan tu negocio.
+      Desde landing pages hasta plataformas complejas, utilizamos las mejores tecnologías
+      para entregar productos digitales de alta calidad.
+    </p>
+  </div>
+</section>
+
+<section class="service-features" aria-label="Características del desarrollo web">
+  <div class="features-container">
+    <h2>¿Qué incluye nuestro servicio?</h2>
+    <ul class="features-list">
+      <li>
+        <h3>Aplicaciones a Medida</h3>
+        <p>Desarrollo personalizado adaptado a las necesidades específicas de tu negocio.</p>
+      </li>
+      <li>
+        <h3>Diseño Responsivo</h3>
+        <p>Tu sitio se verá perfecto en cualquier dispositivo: móvil, tablet y escritorio.</p>
+      </li>
+      <li>
+        <h3>Rendimiento Optimizado</h3>
+        <p>Tiempos de carga ultrarrápidos con optimización de Core Web Vitals.</p>
+      </li>
+      <li>
+        <h3>SEO Integrado</h3>
+        <p>Estructura optimizada para motores de búsqueda desde el primer día.</p>
+      </li>
+      <li>
+        <h3>Panel de Administración</h3>
+        <p>Gestiona tu contenido fácilmente con un CMS intuitivo y potente.</p>
+      </li>
+      <li>
+        <h3>Seguridad Avanzada</h3>
+        <p>Protección contra vulnerabilidades con las mejores prácticas de seguridad.</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="service-technologies" aria-label="Tecnologías utilizadas">
+  <div class="tech-container">
+    <h2>Tecnologías que Utilizamos</h2>
+    <div class="tech-grid">
+      <span class="tech-badge">Angular</span>
+      <span class="tech-badge">React</span>
+      <span class="tech-badge">Node.js</span>
+      <span class="tech-badge">TypeScript</span>
+      <span class="tech-badge">PostgreSQL</span>
+      <span class="tech-badge">MongoDB</span>
+      <span class="tech-badge">AWS</span>
+      <span class="tech-badge">Docker</span>
+    </div>
+  </div>
+</section>
+
+<section class="service-cta" aria-label="Llamada a la acción">
+  <div class="cta-container">
+    <h2>¿Listo para construir tu aplicación web?</h2>
+    <p>Conversemos sobre tu proyecto y hagamos realidad tu idea.</p>
+    <a routerLink="/contact" class="cta-button" aria-label="Ir a contacto">Solicitar Cotización</a>
+  </div>
+</section>

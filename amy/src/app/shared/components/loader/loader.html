@@ -1,0 +1,37 @@
+<!--
+  ARCHIVO: loader.html
+
+  RESPONSABILIDAD:
+  Template del componente Loader. Muestra una animación de carga
+  tipo spinner (circular) o skeleton (placeholder rectangular).
+
+  DEBE CONTENER:
+  - Condicional para tipo spinner o skeleton
+  - Clases dinámicas para tamaño
+
+  NO DEBE CONTENER:
+  - Texto de "Cargando" (lo agrega el padre si es necesario)
+-->
+
+<div
+  class="loader"
+  [class.loader--sm]="size() === 'sm'"
+  [class.loader--md]="size() === 'md'"
+  [class.loader--lg]="size() === 'lg'"
+  role="status"
+  aria-label="Cargando"
+>
+  @if (type() === 'spinner') {
+    <div class="loader__spinner">
+      <svg viewBox="0 0 50 50" class="loader__svg">
+        <circle cx="25" cy="25" r="20" fill="none" stroke-width="4" class="loader__circle" />
+      </svg>
+    </div>
+  } @else {
+    <div class="loader__skeleton">
+      <div class="loader__skeleton-line loader__skeleton-line--short"></div>
+      <div class="loader__skeleton-line loader__skeleton-line--long"></div>
+      <div class="loader__skeleton-line loader__skeleton-line--medium"></div>
+    </div>
+  }
+</div>

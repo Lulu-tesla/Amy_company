@@ -1,0 +1,33 @@
+<!--
+  ARCHIVO: section-title.html
+
+  RESPONSABILIDAD:
+  Template del componente SectionTitle. Muestra un título de sección
+  con subtítulo opcional y línea decorativa de acento.
+
+  DEBE CONTENER:
+  - Título principal con clases dinámicas de alineación
+  - Línea decorativa condicional
+  - Subtítulo condicional
+
+  NO DEBE CONTENER:
+  - Contenido específico de una sección
+  - Estilos inline
+-->
+
+<div
+  class="section-title"
+  [class.section-title--left]="alignment() === 'left'"
+  [class.section-title--center]="alignment() === 'center'"
+  [class.section-title--right]="alignment() === 'right'"
+>
+  @if (decorated()) {
+    <span class="section-title__accent"></span>
+  }
+
+  <h2 class="section-title__heading">{{ title() }}</h2>
+
+  @if (subtitle()) {
+    <p class="section-title__subtitle">{{ subtitle() }}</p>
+  }
+</div>

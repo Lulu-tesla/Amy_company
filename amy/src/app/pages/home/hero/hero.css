@@ -1,0 +1,160 @@
+/*
+ * ARCHIVO: hero.css
+ *
+ * RESPONSABILIDAD:
+ * Estilos de la sección Hero de la página de inicio.
+ * Define el layout, tipografía, botones CTA y área visual.
+ *
+ * DEBE CONTENER:
+ * - Estilos de layout de la sección hero (grid/flex).
+ * - Tipografía del título y subtítulo.
+ * - Estilos de los botones CTA (primario y secundario).
+ * - Estilos del placeholder de imagen/animación.
+ *
+ * NO DEBE CONTENER:
+ * - Estilos globales o de otras secciones.
+ * - Variables CSS globales (usar las definidas en :root).
+ *
+ * MODIFICAR CUANDO:
+ * - Se cambie el diseño visual de la sección hero.
+ * - Se integren imágenes o animaciones reales.
+ * - Se ajuste la responsividad del hero.
+ */
+
+.hero {
+  padding: 5rem 1.5rem;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, #0f0f23 0%, #1a1a3e 100%);
+  color: #ffffff;
+}
+
+.hero__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+  width: 100%;
+}
+
+.hero__title {
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1.15;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(135deg, #ffffff 0%, #a78bfa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero__subtitle {
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: #cbd5e1;
+  margin-bottom: 2rem;
+  max-width: 540px;
+}
+
+.hero__actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.hero__btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.875rem 2rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+
+.hero__btn:hover {
+  transform: translateY(-2px);
+}
+
+.hero__btn--primary {
+  background: linear-gradient(135deg, #7c3aed, #a78bfa);
+  color: #ffffff;
+  box-shadow: 0 4px 15px rgba(124, 58, 237, 0.4);
+}
+
+.hero__btn--primary:hover {
+  box-shadow: 0 6px 20px rgba(124, 58, 237, 0.6);
+}
+
+.hero__btn--secondary {
+  background: transparent;
+  color: #a78bfa;
+  border: 2px solid #a78bfa;
+}
+
+.hero__btn--secondary:hover {
+  background: rgba(167, 139, 250, 0.1);
+}
+
+.hero__visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero__image-placeholder {
+  width: 100%;
+  max-width: 450px;
+  aspect-ratio: 1;
+  border-radius: 24px;
+  border: 2px dashed rgba(167, 139, 250, 0.3);
+  background: rgba(167, 139, 250, 0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.hero__placeholder-icon {
+  font-size: 4rem;
+}
+
+.hero__placeholder-text {
+  color: #94a3b8;
+  font-size: 0.875rem;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 3rem 1.5rem;
+    min-height: auto;
+  }
+
+  .hero__container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .hero__title {
+    font-size: 2rem;
+  }
+
+  .hero__subtitle {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero__actions {
+    justify-content: center;
+  }
+
+  .hero__image-placeholder {
+    max-width: 300px;
+  }
+}

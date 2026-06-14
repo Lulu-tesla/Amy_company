@@ -1,0 +1,68 @@
+// ============================================================
+// ARCHIVO: main.scss
+//
+// RESPONSABILIDAD:
+// Punto de entrada principal de estilos SCSS. Importa todos
+// los parciales en el orden correcto para generar el CSS final.
+// Controla el orden de cascada CSS.
+//
+// DEBE CONTENER:
+// - Importaciones de abstracts (variables, funciones, mixins)
+// - Importaciones de base (reset, tipografía)
+// - Importaciones de layout (grid, contenedores)
+// - Importaciones de components (cuando se creen)
+// - Importaciones de pages (cuando se creen)
+//
+// NO DEBE CONTENER:
+// - Estilos directos (selectores CSS)
+// - Variables o mixins (van en abstracts/)
+// - Comentarios de código o lógica
+//
+// MODIFICAR CUANDO:
+// - Se agregue un nuevo archivo parcial
+// - Se cambie el orden de importación
+// - Se agregue una nueva capa (ej: utilities/)
+//
+// EJEMPLO DE USO:
+// Referenciado en angular.json → styles: ["src/styles/main.scss"]
+// ============================================================
+
+// -----------------------------------------------------------
+// 1. ABSTRACTS - Variables, funciones y mixins
+// Solo se usan con @use en cada archivo que los necesite.
+// Se reenvían aquí para que estén disponibles globalmente.
+// -----------------------------------------------------------
+@use 'abstracts/variables';
+@use 'abstracts/functions';
+@use 'abstracts/mixins';
+
+// -----------------------------------------------------------
+// 2. BASE - Reset y tipografía global
+// Estilos que se aplican a elementos HTML directamente.
+// -----------------------------------------------------------
+@use 'base/reset';
+@use 'base/typography';
+
+// -----------------------------------------------------------
+// 3. LAYOUT - Grid y contenedores
+// Clases de estructura y layout reutilizables.
+// -----------------------------------------------------------
+@use 'layout/grid';
+@use 'layout/containers';
+
+// -----------------------------------------------------------
+// 4. COMPONENTS - Componentes globales SCSS
+// Estilos de componentes que se usan en múltiples páginas.
+// Descomentar cuando se creen los archivos.
+// -----------------------------------------------------------
+// @use 'components/buttons';
+// @use 'components/cards';
+// @use 'components/forms';
+
+// -----------------------------------------------------------
+// 5. PAGES - Estilos específicos de páginas
+// Sobrescrituras o estilos únicos para páginas específicas.
+// Descomentar cuando se creen los archivos.
+// -----------------------------------------------------------
+// @use 'pages/home';
+// @use 'pages/about';
