@@ -1,58 +1,91 @@
-<section class="hero-section hero-home">
+<section class="hero-section hero-home" aria-label="Hero principal Amy Company">
+
+  <!-- ── Fondo canvas matrix (lógica existente) ── -->
   <div class="hero-background" aria-hidden="true">
     <canvas #heroCanvas class="hero-canvas"></canvas>
-    <!-- PLACEHOLDER: assets/images/hero/hero-bg.jpg
-         Dimensiones recomendadas: 1920x1080px -->
     <div class="hero-overlay"></div>
   </div>
 
-  <div class="container hero-grid">
-    <div class="hero-copy">
-      <span class="section-kicker">Agencia digital 360</span>
-      <h1>
-        <span class="typewriter" #typewriterText></span>
-        <span class="cursor">|</span>
-      </h1>
-      <p class="lead">
-        AMY COMPANY crea sitios, tiendas y marcas digitales que impactan de inmediato, funcionan en todos los dispositivos y convierten visitas en clientes.
-      </p>
+  <!-- ══════════════════════════════════════════════
+       BLOQUE SUPERIOR — Headline + Wave
+  ══════════════════════════════════════════════ -->
+  <div class="hero-top">
+    <div class="container hero-top-inner">
 
-      <div class="button-row hero-buttons">
-        <a routerLink="/contact" class="btn primary btn-bubble">Solicitar propuesta</a>
-        <a routerLink="/services" class="btn btn-outline btn-bubble">Ver servicios</a>
-        <a routerLink="/portfolio" class="btn btn-ghost btn-bubble">Ver portafolio</a>
-      </div>
+      <!-- Copy izquierdo -->
+      <div class="hero-copy">
+        <p class="hero-eyebrow">
+          <span class="eyebrow-arrow">›</span>
+          <span>DISPONIBLE PARA</span>
+          <span class="eyebrow-chip"><span class="chip-dot"></span>WEB</span>
+          <span class="eyebrow-chip"><span class="chip-dot"></span>APPS</span>
+          <span class="eyebrow-chip"><span class="chip-dot"></span>ECOMMERCE</span>
+        </p>
 
-      <div class="stats-strip" aria-label="Indicadores de confianza">
-        @for (stat of stats; track stat.title) {
-          <div class="stat-card">
-            <strong>{{ stat.display }}</strong>
-            <span>{{ stat.title }}</span>
-          </div>
-        }
-      </div>
-    </div>
+        <h1 class="hero-headline">
+          <span class="headline-brand">Amy.</span><br>
+          <span class="typewriter" #typewriterText></span><span class="cursor">|</span>
+        </h1>
 
-    <div class="hero-panel" aria-label="Resumen de métricas y enfoque creativo">
-      <div class="panel-card">
-        <div class="panel-tag">Estrategia + Diseño + Lanzamiento</div>
-        <h2>Impulsamos proyectos con estructura comercial clara.</h2>
-        <p>Con una comunicación visual sencilla y una experiencia pensada para que el usuario actúe rápido.</p>
-        <div class="panel-grid">
-          <div>
-            <span class="panel-number">01</span>
-            <p>Auditoría de presencia digital</p>
-          </div>
-          <div>
-            <span class="panel-number">02</span>
-            <p>Propuesta de conversión y estructura</p>
-          </div>
-          <div>
-            <span class="panel-number">03</span>
-            <p>Diseño y desarrollo sobre métricas reales</p>
-          </div>
+        <div class="button-row hero-buttons">
+          <a routerLink="/contact" class="btn-hero btn-hero--primary" id="hero-cta-primary">
+            SOLICITAR PROPUESTA
+          </a>
+          <a routerLink="/portfolio" class="btn-hero btn-hero--ghost" id="hero-cta-portfolio">
+            Ver portafolio →
+          </a>
         </div>
       </div>
+
+      <!-- Onda SVG derecha -->
+      <div class="hero-wave-wrap" aria-hidden="true">
+        <svg class="hero-wave-svg" viewBox="0 0 600 280" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+          <!-- Onda principal sólida -->
+          <path
+            class="wave-path wave-path--main"
+            d="M0 140 C60 60, 120 220, 180 140 S300 60, 360 140 S480 220, 540 140 S600 60, 600 140"
+            stroke="#00d4aa" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <!-- Onda secundaria punteada -->
+          <path
+            class="wave-path wave-path--dashed"
+            d="M0 160 C60 80, 120 240, 180 160 S300 80, 360 160 S480 240, 540 160 S600 80, 600 160"
+            stroke="#00d4aa" stroke-width="1.5" fill="none" stroke-dasharray="6 6" opacity="0.45"/>
+          <!-- Punto de intersección -->
+          <circle class="wave-dot" cx="300" cy="140" r="5" fill="#00d4aa"/>
+          <circle class="wave-dot-ring" cx="300" cy="140" r="10" stroke="#00d4aa" stroke-width="1" fill="none" opacity="0.5"/>
+          <!-- Línea de referencia horizontal -->
+          <line x1="0" y1="140" x2="600" y2="140" stroke="#00d4aa" stroke-width="0.5" opacity="0.18"/>
+          <!-- Regla inferior -->
+          <line x1="0" y1="230" x2="600" y2="230" stroke="#00d4aa" stroke-width="0.8" opacity="0.3"/>
+          @for (tick of waveTicks; track tick) {
+            <line [attr.x1]="tick" y1="225" [attr.x2]="tick" y2="235" stroke="#00d4aa" stroke-width="0.8" opacity="0.35"/>
+          }
+        </svg>
+      </div>
+
     </div>
   </div>
+
+  <!-- ══════════════════════════════════════════════
+       BANDA DE PUNTOS
+  ══════════════════════════════════════════════ -->
+  <div class="hero-dot-band" aria-hidden="true">
+    <div class="dot-grid"></div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+       STATS STRIP — estilo Motion.dev numbered list
+  ══════════════════════════════════════════════ -->
+  <div class="container">
+    <div class="hero-features" aria-label="Por qué Amy Company">
+      @for (feature of features; track feature.num) {
+        <div class="feature-item">
+          <span class="feature-num">{{ feature.num }}</span>
+          <strong class="feature-title">{{ feature.title }}</strong>
+          <p class="feature-desc">{{ feature.desc }}</p>
+        </div>
+      }
+    </div>
+  </div>
+
 </section>

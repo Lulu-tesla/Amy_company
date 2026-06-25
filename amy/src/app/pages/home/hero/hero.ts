@@ -32,6 +32,37 @@ export class HomeHero implements AfterViewInit, OnDestroy {
     { title: 'Responsive total', value: 100, suffix: '%', display: '0%' }
   ];
 
+  readonly features = [
+    {
+      num: '01',
+      title: 'Estrategia',
+      desc: 'Auditoría digital, definición de objetivos y hoja de ruta comercial clara.'
+    },
+    {
+      num: '02',
+      title: 'Diseño premium',
+      desc: 'Interfaces de alta conversión diseñadas con sistemas visuales sólidos.'
+    },
+    {
+      num: '03',
+      title: 'Desarrollo rápido',
+      desc: 'Stack moderno, código limpio y primer prototipo en menos de 7 días.'
+    },
+    {
+      num: '04',
+      title: 'SEO & velocidad',
+      desc: 'Lighthouse 95+, Core Web Vitals optimizados y posicionamiento real.'
+    },
+    {
+      num: '05',
+      title: 'Soporte continuo',
+      desc: 'Mantenimiento, actualizaciones y escalabilidad sin costo adicional.'
+    }
+  ];
+
+  /** Posiciones X de las marcas de la regla SVG */
+  readonly waveTicks: number[] = Array.from({ length: 31 }, (_, i) => i * 20);
+
   private canvasContext!: CanvasRenderingContext2D | null;
   private animationFrameId: number | null = null;
   private matrixDrops: number[] = [];
