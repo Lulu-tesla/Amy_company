@@ -1,0 +1,285 @@
+// =============================================================================
+// _animations.scss — Amy Company Global Animations
+// Keyframes reutilizables + clases utilitarias de animación
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// VARIABLES DE ANIMACIÓN
+// -----------------------------------------------------------------------------
+
+$amy-anim-duration-fast:   200ms  !default;
+$amy-anim-duration-base:   400ms  !default;
+$amy-anim-duration-slow:   700ms  !default;
+$amy-anim-duration-slower: 1000ms !default;
+
+$amy-anim-ease-out:    cubic-bezier(0.16, 1, 0.3, 1)       !default;
+$amy-anim-ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1)   !default;
+$amy-anim-ease-in-out: cubic-bezier(0.65, 0, 0.35, 1)      !default;
+
+// -----------------------------------------------------------------------------
+// KEYFRAMES
+// -----------------------------------------------------------------------------
+
+/// Aparición suave desde opacidad 0
+@keyframes amy-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/// Deslizamiento hacia arriba con fade-in
+@keyframes amy-slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/// Deslizamiento hacia abajo con fade-in
+@keyframes amy-slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/// Entrada desde la izquierda
+@keyframes amy-slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/// Entrada desde la derecha
+@keyframes amy-slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/// Escala desde centro con fade-in
+@keyframes amy-scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/// Escala con efecto spring (rebote suave)
+@keyframes amy-scale-in-spring {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/// Pulso suave — para badges, CTAs, indicadores de estado
+@keyframes amy-pulse-soft {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.75;
+    transform: scale(1.04);
+  }
+}
+
+/// Pulso de brillo accent — para elementos con color de marca
+@keyframes amy-glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(0, 212, 170, 0);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(0, 212, 170, 0.15);
+  }
+}
+
+/// Flotación vertical — para elementos decorativos, íconos hero
+@keyframes amy-float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/// Shimmer — para skeletons y estados de carga
+@keyframes amy-shimmer {
+  from {
+    background-position: -200% 0;
+  }
+  to {
+    background-position: 200% 0;
+  }
+}
+
+/// Rotación continua — para spinners
+@keyframes amy-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// -----------------------------------------------------------------------------
+// CLASES UTILITARIAS DE ANIMACIÓN
+// -----------------------------------------------------------------------------
+
+.amy-fade-in {
+  animation: amy-fade-in $amy-anim-duration-base $amy-anim-ease-out both;
+}
+
+.amy-slide-up {
+  animation: amy-slide-up $amy-anim-duration-base $amy-anim-ease-out both;
+}
+
+.amy-slide-down {
+  animation: amy-slide-down $amy-anim-duration-base $amy-anim-ease-out both;
+}
+
+.amy-slide-in-left {
+  animation: amy-slide-in-left $amy-anim-duration-base $amy-anim-ease-out both;
+}
+
+.amy-slide-in-right {
+  animation: amy-slide-in-right $amy-anim-duration-base $amy-anim-ease-out both;
+}
+
+.amy-scale-in {
+  animation: amy-scale-in $amy-anim-duration-base $amy-anim-ease-out both;
+}
+
+.amy-scale-in-spring {
+  animation: amy-scale-in-spring $amy-anim-duration-base $amy-anim-ease-spring both;
+}
+
+.amy-pulse-soft {
+  animation: amy-pulse-soft 2.5s ease-in-out infinite;
+}
+
+.amy-glow-pulse {
+  animation: amy-glow-pulse 2.5s ease-in-out infinite;
+}
+
+.amy-float {
+  animation: amy-float 4s ease-in-out infinite;
+}
+
+.amy-spin {
+  animation: amy-spin 1s linear infinite;
+}
+
+// Modificadores de delay
+.amy-delay-100 { animation-delay: 100ms; }
+.amy-delay-200 { animation-delay: 200ms; }
+.amy-delay-300 { animation-delay: 300ms; }
+.amy-delay-400 { animation-delay: 400ms; }
+.amy-delay-500 { animation-delay: 500ms; }
+.amy-delay-700 { animation-delay: 700ms; }
+.amy-delay-1000 { animation-delay: 1000ms; }
+
+// Respeto prefers-reduced-motion
+@media (prefers-reduced-motion: reduce) {
+  .amy-fade-in,
+  .amy-slide-up,
+  .amy-slide-down,
+  .amy-slide-in-left,
+  .amy-slide-in-right,
+  .amy-scale-in,
+  .amy-scale-in-spring {
+    animation: amy-fade-in 100ms ease both;
+  }
+
+  .amy-pulse-soft,
+  .amy-glow-pulse,
+  .amy-float,
+  .amy-spin {
+    animation: none;
+  }
+}
+
+// =============================================================================
+// CSS CUSTOM PROPERTIES — Duraciones sincronizadas con GSAP constants
+// Usar en componentes que animen con CSS puro (sin GSAP)
+// =============================================================================
+
+:root {
+  --dur-fast: 0.3s;    // sincronizado con DURATION_FAST en gsap.config.ts
+  --dur-base: 0.6s;    // sincronizado con DURATION_BASE en gsap.config.ts
+  --dur-slow: 1.2s;    // sincronizado con DURATION_SLOW en gsap.config.ts
+}
+
+// =============================================================================
+// @keyframes fadeInUp — Fallback CSS para casos sin JavaScript
+// GSAP usa su propia implementación en animation.utils.ts
+// =============================================================================
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// =============================================================================
+// .animate-on-scroll — Placeholder para ScrollTrigger
+// GSAP añade/quita la clase .is-visible cuando el elemento entra en viewport
+// =============================================================================
+
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity var(--dur-base) ease,
+    transform var(--dur-base) ease;
+
+  &.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-on-scroll {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

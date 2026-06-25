@@ -21,6 +21,7 @@
  */
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { initGSAP } from './core/core';
 
 @Component({
   standalone: true,
@@ -29,4 +30,8 @@ import { RouterOutlet } from '@angular/router';
   templateUrl: './app.html',
   styleUrls: ['./app.css']
 })
-export class App {}
+export class App {
+  constructor() {
+    initGSAP();
+  }
+}
