@@ -1,0 +1,10 @@
+.home-page {
+  display: grid;
+  gap: 2rem;
+}
+
+@media (max-width: 760px) {
+  .home-page {
+    gap: 1.5rem;
+  }
+}

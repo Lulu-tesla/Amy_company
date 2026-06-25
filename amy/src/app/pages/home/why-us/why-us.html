@@ -1,0 +1,32 @@
+<section class="section why-us-section">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-kicker">Por qué elegirnos</span>
+      <h2>Consultoría digital con foco práctico y resultados reales.</h2>
+      <p class="lead">Te apoyamos con decisiones claras, ejecución eficiente y un diseño técnico que no pierde velocidad ni credibilidad.</p>
+    </div>
+
+    <div class="why-us-grid">
+      @for (item of advantages; track item.title; let i = $index) {
+        <article class="accordion-card">
+          <button type="button" class="accordion-trigger" (click)="toggle(i)" aria-expanded="{{ activeIndex === i }}">
+            <div class="accordion-summary">
+              <span class="accordion-badge">0{{ i + 1 }}</span>
+              <div>
+                <h3>{{ item.title }}</h3>
+                <p>{{ item.summary }}</p>
+              </div>
+            </div>
+            <span class="accordion-icon">{{ activeIndex === i ? '−' : '+' }}</span>
+          </button>
+
+          @if (activeIndex === i) {
+            <div class="accordion-panel">
+              <p>{{ item.details }}</p>
+            </div>
+          }
+        </article>
+      }
+    </div>
+  </div>
+</section>

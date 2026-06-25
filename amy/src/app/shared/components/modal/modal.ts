@@ -24,7 +24,7 @@ import { Component, input, output } from '@angular/core';
       </div>
     }
   `,
-  styleUrl: './modal.css'
+  styleUrls: ['./modal.css']
 })
 export class Modal {
   isOpen = input<boolean>(false);

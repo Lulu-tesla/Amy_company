@@ -1,68 +1,461 @@
-// ============================================================
-// ARCHIVO: main.scss
-//
-// RESPONSABILIDAD:
-// Punto de entrada principal de estilos SCSS. Importa todos
-// los parciales en el orden correcto para generar el CSS final.
-// Controla el orden de cascada CSS.
-//
-// DEBE CONTENER:
-// - Importaciones de abstracts (variables, funciones, mixins)
-// - Importaciones de base (reset, tipografía)
-// - Importaciones de layout (grid, contenedores)
-// - Importaciones de components (cuando se creen)
-// - Importaciones de pages (cuando se creen)
-//
-// NO DEBE CONTENER:
-// - Estilos directos (selectores CSS)
-// - Variables o mixins (van en abstracts/)
-// - Comentarios de código o lógica
-//
-// MODIFICAR CUANDO:
-// - Se agregue un nuevo archivo parcial
-// - Se cambie el orden de importación
-// - Se agregue una nueva capa (ej: utilities/)
-//
-// EJEMPLO DE USO:
-// Referenciado en angular.json → styles: ["src/styles/main.scss"]
-// ============================================================
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
-// -----------------------------------------------------------
-// 1. ABSTRACTS - Variables, funciones y mixins
-// Solo se usan con @use en cada archivo que los necesite.
-// Se reenvían aquí para que estén disponibles globalmente.
-// -----------------------------------------------------------
-@use 'abstracts/variables';
-@use 'abstracts/functions';
-@use 'abstracts/mixins';
+* {
+  margin: 0;
+}
 
-// -----------------------------------------------------------
-// 2. BASE - Reset y tipografía global
-// Estilos que se aplican a elementos HTML directamente.
-// -----------------------------------------------------------
-@use 'base/reset';
-@use 'base/typography';
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
 
-// -----------------------------------------------------------
-// 3. LAYOUT - Grid y contenedores
-// Clases de estructura y layout reutilizables.
-// -----------------------------------------------------------
-@use 'layout/grid';
-@use 'layout/containers';
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
 
-// -----------------------------------------------------------
-// 4. COMPONENTS - Componentes globales SCSS
-// Estilos de componentes que se usan en múltiples páginas.
-// Descomentar cuando se creen los archivos.
-// -----------------------------------------------------------
-// @use 'components/buttons';
-// @use 'components/cards';
-// @use 'components/forms';
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
 
-// -----------------------------------------------------------
-// 5. PAGES - Estilos específicos de páginas
-// Sobrescrituras o estilos únicos para páginas específicas.
-// Descomentar cuando se creen los archivos.
-// -----------------------------------------------------------
-// @use 'pages/home';
-// @use 'pages/about';
+button {
+  cursor: pointer;
+  border: 0;
+  background: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible {
+  outline: 3px solid rgba(20, 184, 166, 0.5);
+  outline-offset: 3px;
+}
+
+ul,
+ol {
+  list-style: none;
+  padding: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+:root {
+  color-scheme: dark;
+  --color-navy-deep: #0A1628;
+  --color-navy-mid: #0F2040;
+  --color-green-tree: #1B4D3E;
+  --color-green-accent: #2DD4BF;
+  --color-black: #000000;
+  --color-text-light: #E8F4FD;
+  --color-text-muted: #94A3B8;
+
+  --ink: var(--color-text-light);
+  --muted: var(--color-text-muted);
+  --soft: rgba(232, 244, 253, 0.08);
+  --line: rgba(232, 244, 253, 0.14);
+  --brand: var(--color-navy-mid);
+  --accent: var(--color-green-accent);
+  --accent-strong: var(--color-green-tree);
+  --radius: 0.5rem;
+  --shadow: 0 22px 55px rgba(0, 0, 0, 0.35);
+}
+
+html {
+  scroll-padding-top: 88px;
+}
+
+body {
+  min-width: 320px;
+  color: var(--ink);
+  background: #fff;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+body.no-scroll {
+  overflow: hidden;
+}
+
+::selection {
+  color: #fff;
+  background: var(--accent-strong);
+}
+
+main {
+  overflow-x: clip;
+}
+
+.page {
+  background: #fff;
+}
+
+.section,
+.hero-section {
+  padding: clamp(3.75rem, 8vw, 7rem) 0;
+}
+
+.container {
+  width: min(1180px, calc(100% - 2rem));
+  margin: 0 auto;
+}
+
+.section-kicker {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 0 0.7rem;
+  border: 1px solid rgba(20, 184, 166, 0.35);
+  border-radius: 999px;
+  color: var(--accent-strong);
+  background: #f0fdfa;
+  font-size: 0.78rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.section-head {
+  max-width: 760px;
+  margin-bottom: clamp(1.75rem, 4vw, 3rem);
+}
+
+.section-head.center {
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+}
+
+h1,
+h2,
+h3 {
+  font-family: 'Inter Tight', 'Inter', sans-serif;
+  letter-spacing: 0;
+}
+
+h1 {
+  max-width: 920px;
+  margin-top: 1rem;
+  font-size: clamp(2.35rem, 8vw, 5.85rem);
+  line-height: 0.97;
+}
+
+h2 {
+  margin-top: 0.8rem;
+  font-size: clamp(2rem, 5vw, 3.7rem);
+  line-height: 1.02;
+}
+
+h3 {
+  font-size: clamp(1.08rem, 2vw, 1.35rem);
+}
+
+.lead {
+  max-width: 720px;
+  margin-top: 1rem;
+  color: var(--muted);
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  line-height: 1.7;
+}
+
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.6rem;
+}
+
+.btn {
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 0 1rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  color: var(--ink);
+  background: #fff;
+  font-weight: 900;
+  transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.12);
+}
+
+.btn.primary {
+  color: #fff;
+  border-color: var(--brand);
+  background: var(--brand);
+}
+
+.btn.accent {
+  color: #042f2e;
+  border-color: #5eead4;
+  background: #5eead4;
+}
+
+.grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.grid-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.grid-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.grid-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.card {
+  border: 1px solid var(--line);
+  border-radius: 0.5rem;
+  background: #fff;
+  box-shadow: 0 12px 34px rgba(15, 23, 42, 0.06);
+}
+
+.feature-card {
+  padding: clamp(1rem, 3vw, 1.35rem);
+}
+
+.feature-card p,
+.pricing-card p,
+.project-card p,
+.faq-item p {
+  margin-top: 0.65rem;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.icon-badge {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 1rem;
+  border-radius: 0.45rem;
+  color: #042f2e;
+  background: #ccfbf1;
+  font-weight: 900;
+}
+
+.soft-band {
+  background: var(--soft);
+  border-block: 1px solid var(--line);
+}
+
+.hero-section {
+  position: relative;
+  padding-top: clamp(4.5rem, 9vw, 7rem);
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(310px, 0.8fr);
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+}
+
+.hero-panel {
+  min-height: 440px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.75rem;
+  background:
+    linear-gradient(135deg, rgba(15, 23, 42, 0.96), rgba(15, 118, 110, 0.9)),
+    radial-gradient(circle at 30% 20%, #5eead4, transparent 35%);
+  box-shadow: var(--shadow);
+}
+
+.dashboard-visual {
+  position: absolute;
+  inset: 1.25rem;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 1rem;
+  color: #e2e8f0;
+}
+
+.visual-top,
+.visual-bottom {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.visual-chip,
+.metric-chip {
+  padding: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 0.5rem;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.visual-chart {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  align-items: end;
+  gap: 0.75rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.visual-chart span {
+  min-height: 48px;
+  border-radius: 999px 999px 0.3rem 0.3rem;
+  background: #5eead4;
+}
+
+.visual-chart span:nth-child(2) { height: 46%; background: #fbbf24; }
+.visual-chart span:nth-child(3) { height: 72%; }
+.visual-chart span:nth-child(4) { height: 58%; background: #93c5fd; }
+.visual-chart span:nth-child(5) { height: 88%; }
+
+.stat-strip {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+
+.stat {
+  padding: 1rem;
+  border-left: 3px solid var(--accent);
+  background: #f8fafc;
+}
+
+.stat strong {
+  display: block;
+  font-size: 1.45rem;
+}
+
+.stat span {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+form {
+  display: grid;
+  gap: 1rem;
+}
+
+.field {
+  display: grid;
+  gap: 0.4rem;
+}
+
+label {
+  color: #1e293b;
+  font-weight: 800;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  min-height: 48px;
+  padding: 0.75rem 0.85rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 0.5rem;
+  background: #fff;
+}
+
+textarea {
+  min-height: 132px;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 3px solid rgba(20, 184, 166, 0.28);
+  border-color: var(--accent-strong);
+}
+
+.error-text {
+  color: var(--danger);
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+.success-box {
+  padding: 0.9rem 1rem;
+  border: 1px solid #86efac;
+  border-radius: 0.5rem;
+  color: var(--success);
+  background: #f0fdf4;
+  font-weight: 800;
+}
+
+@media (max-width: 900px) {
+  .hero-grid,
+  .grid-2,
+  .grid-3,
+  .grid-4 {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-panel {
+    min-height: 360px;
+  }
+}
+
+@media (max-width: 560px) {
+  .container {
+    width: min(100% - 1rem, 1180px);
+  }
+
+  .section,
+  .hero-section {
+    padding: 3rem 0;
+  }
+
+  .button-row,
+  .btn {
+    width: 100%;
+  }
+
+  .stat-strip {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-panel {
+    min-height: 320px;
+  }
+
+  .visual-top,
+  .visual-bottom {
+    flex-direction: column;
+  }
+}

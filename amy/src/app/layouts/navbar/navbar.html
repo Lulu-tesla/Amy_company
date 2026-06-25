@@ -1,36 +1,312 @@
 <!--
-  ARCHIVO: navbar.html
-  RESPONSABILIDAD: Plantilla del Navbar
+  RECOMENDACION DE DISEÑO: Ya tiene un diseño de cápsula flotante y mega menú. Podría mejorarse añadiendo un buscador integrado oculto, o un selector de temas (Dark/Light mode) integrado sutilmente al lado de los enlaces de escritorio.
+  PROMPT ADICIONAL: "Añade un botón de búsqueda minimalista en el navbar que abra un modal a pantalla completa con efecto de desenfoque, manteniendo intacta la cápsula flotante actual."
 -->
-<header [ngClass]="{'scrolled': isScrolled()}" class="navbar">
-  <div class="container">
-    <a routerLink="/" class="logo">Amy Developers</a>
-    
-    <nav class="desktop-nav">
-      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Inicio</a>
-      <a routerLink="/about" routerLinkActive="active">Nosotros</a>
-      <a routerLink="/services" routerLinkActive="active">Servicios</a>
-      <a routerLink="/portfolio" routerLinkActive="active">Portafolio</a>
-      <a routerLink="/pricing" routerLinkActive="active">Precios</a>
-      <a routerLink="/contact" class="btn btn-primary">Contacto</a>
-    </nav>
+<!--
+  ARCHIVO: navbar.html
+  COMPONENTE: NavbarComponent
+  PROYECTO: Amy Company â€” Angular v22
 
-    <button class="mobile-toggle" (click)="toggleMobileMenu()" aria-label="Abrir menú">
-      ☰
+  DiseÃ±o: CÃ¡psula flotante + Minimalista + Mega MenÃº
+  Bug fix: Hover bridge implementado via (mouseenter)/(mouseleave)
+           con debounce en el TS (scheduleMegaMenuClose).
+-->
+
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+     HEADER PRINCIPAL â€” CÃ¡psula Flotante
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+<header class="navbar" [class.scrolled]="isScrolled()">
+
+  <!-- CÃ¡psula interior flotante -->
+  <div class="navbar-capsule">
+
+    <!-- â”€â”€ LOGO â”€â”€ -->
+    <a routerLink="/" class="navbar-logo" aria-label="Ir al inicio â€” Amy Company">
+      <img
+        src="/assets/images/logo.png"
+        alt="Amy Company"
+        class="logo-img"
+        loading="eager"
+      />
+    </a>
+
+    <!-- â”€â”€ NAV DESKTOP â”€â”€ -->
+    <nav class="desktop-nav" aria-label="NavegaciÃ³n principal">
+
+      <a routerLink="/"
+         routerLinkActive="nav-active"
+         [routerLinkActiveOptions]="{ exact: true }"
+         class="nav-link">
+        Inicio
+      </a>
+
+      <a routerLink="/about"
+         routerLinkActive="nav-active"
+         class="nav-link">
+        Nosotros
+      </a>
+
+      <!-- â”€â”€ MEGA MENU WRAPPER â”€â”€
+           (mouseenter) abre inmediatamente.
+           (mouseleave) usa scheduleMegaMenuClose() con debounce
+           para crear el "puente" que evita que el menÃº se cierre
+           al cruzar el pequeÃ±o gap entre el botÃ³n y el panel. -->
+      <div
+        class="mega-wrapper"
+        (mouseenter)="openMegaMenu()"
+        (mouseleave)="scheduleMegaMenuClose()"
+      >
+        <button
+          class="nav-link mega-trigger"
+          [class.nav-active]="isMegaMenuOpen()"
+          [attr.aria-expanded]="isMegaMenuOpen()"
+          aria-haspopup="true"
+          aria-controls="mega-dropdown"
+          (click)="toggleMegaMenu($event)"
+        >
+          Servicios
+          <span class="chevron-icon" [class.rotated]="isMegaMenuOpen()" aria-hidden="true">
+            <lucide-angular [img]="ChevronDown" [size]="14" strokeWidth="2"></lucide-angular>
+          </span>
+        </button>
+
+        <!-- MEGA MENU DROPDOWN
+             El panel tambiÃ©n tiene (mouseenter) / (mouseleave) para
+             mantener el menÃº abierto mientras el cursor estÃ¡ dentro. -->
+        @if (isMegaMenuOpen()) {
+          <div
+            id="mega-dropdown"
+            class="mega-dropdown"
+            role="region"
+            aria-label="Servicios de Amy Company"
+            (mouseenter)="openMegaMenu()"
+            (mouseleave)="scheduleMegaMenuClose()"
+          >
+            <!-- Encabezado del mega menÃº -->
+            <div class="mega-header">
+              <span class="mega-header-label">Nuestros Servicios</span>
+              <span class="mega-header-badge">{{ services.length }} Ã¡reas</span>
+            </div>
+
+            <!-- Grid de servicios â€” 2 columnas + 1 destacado -->
+            <div class="mega-body">
+              <div class="mega-grid">
+                @for (service of services; track service.path) {
+                  <a
+                    [routerLink]="service.path"
+                    class="mega-item"
+                    (click)="closeMegaMenu()"
+                  >
+                    <span class="mega-item-icon">
+                      <lucide-angular [img]="service.icon" [size]="18" strokeWidth="1.6"></lucide-angular>
+                    </span>
+                    <span class="mega-item-body">
+                      <span class="mega-item-title">{{ service.title }}</span>
+                      <span class="mega-item-desc">{{ service.desc }}</span>
+                    </span>
+                    <span class="mega-item-arrow" aria-hidden="true">
+                      <lucide-angular [img]="ArrowRight" [size]="13" strokeWidth="2"></lucide-angular>
+                    </span>
+                  </a>
+                }
+              </div>
+
+              <!-- Sidebar del mega menÃº â€” CTA lateral -->
+              <div class="mega-sidebar">
+                <div class="mega-sidebar-card">
+                  <span class="mega-sidebar-tag">Â¿No sabes por dÃ³nde empezar?</span>
+                  <p class="mega-sidebar-text">CuÃ©ntanos tu idea y te damos un diagnÃ³stico gratuito.</p>
+                  <a routerLink="/contact" class="mega-sidebar-cta" (click)="closeMegaMenu()">
+                    Solicitar consulta
+                    <lucide-angular [img]="ArrowRight" [size]="13" strokeWidth="2.5"></lucide-angular>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Footer del mega menÃº -->
+            <div class="mega-footer">
+              <a routerLink="/services" class="mega-see-all" (click)="closeMegaMenu()">
+                Ver todos los servicios
+                <lucide-angular [img]="ArrowRight" [size]="14" strokeWidth="2"></lucide-angular>
+              </a>
+            </div>
+          </div>
+        }
+      </div><!-- /mega-wrapper -->
+
+      <a routerLink="/portfolio"
+         routerLinkActive="nav-active"
+         class="nav-link">
+        Portafolio
+      </a>
+
+      <!-- Nuevo enlace: Tutoriales -->
+      <a routerLink="/tutorials"
+         routerLinkActive="nav-active"
+         class="nav-link">
+        Tutoriales
+      </a>
+
+      <!-- Nuevo enlace: Pagos -->
+      <a routerLink="/pricing"
+         routerLinkActive="nav-active"
+         class="nav-link nav-link--payments">
+        <lucide-angular [img]="CreditCard" [size]="14" strokeWidth="2"></lucide-angular>
+        Pagos
+      </a>
+
+      <a routerLink="/contact" class="nav-cta">
+        Iniciar proyecto
+      </a>
+
+    </nav><!-- /desktop-nav -->
+
+    <!-- â”€â”€ HAMBURGER (MÃ“VIL) â”€â”€ -->
+    <button
+      class="hamburger-btn"
+      [class.is-open]="isMobileMenuOpen()"
+      (click)="toggleMobileMenu()"
+      [attr.aria-expanded]="isMobileMenuOpen()"
+      aria-controls="mobile-menu"
+      aria-label="Abrir menÃº de navegaciÃ³n"
+    >
+      <span class="bar bar-1"></span>
+      <span class="bar bar-2"></span>
+      <span class="bar bar-3"></span>
     </button>
-  </div>
+
+  </div><!-- /navbar-capsule -->
 </header>
 
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+     MENÃš MÃ“VIL
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
 @if (isMobileMenuOpen()) {
-  <div class="mobile-menu">
-    <button class="close-btn" (click)="toggleMobileMenu()">✕</button>
-    <nav>
-      <a routerLink="/" (click)="toggleMobileMenu()">Inicio</a>
-      <a routerLink="/about" (click)="toggleMobileMenu()">Nosotros</a>
-      <a routerLink="/services" (click)="toggleMobileMenu()">Servicios</a>
-      <a routerLink="/portfolio" (click)="toggleMobileMenu()">Portafolio</a>
-      <a routerLink="/pricing" (click)="toggleMobileMenu()">Precios</a>
-      <a routerLink="/contact" (click)="toggleMobileMenu()">Contacto</a>
+  <!-- Overlay -->
+  <div
+    class="mobile-overlay"
+    (click)="closeMobileMenu()"
+    aria-hidden="true"
+  ></div>
+
+  <!-- Drawer -->
+  <div
+    id="mobile-menu"
+    class="mobile-menu"
+    role="dialog"
+    aria-modal="true"
+    aria-label="MenÃº de navegaciÃ³n mÃ³vil"
+  >
+
+    <!-- Header del drawer -->
+    <div class="mobile-menu-header">
+      <img
+        src="/assets/images/logo1.png"
+        alt="Amy Company"
+        class="logo-img"
+      />
+      <button
+        class="mobile-close-btn"
+        (click)="closeMobileMenu()"
+        aria-label="Cerrar menÃº"
+      >
+        <lucide-angular [img]="X" [size]="20" strokeWidth="2"></lucide-angular>
+      </button>
+    </div>
+
+    <!-- Links -->
+    <nav class="mobile-nav" aria-label="NavegaciÃ³n mÃ³vil">
+
+      <a routerLink="/"
+         routerLinkActive="mobile-active"
+         [routerLinkActiveOptions]="{ exact: true }"
+         class="mobile-link"
+         (click)="closeMobileMenu()">
+        Inicio
+      </a>
+
+      <a routerLink="/about"
+         routerLinkActive="mobile-active"
+         class="mobile-link"
+         (click)="closeMobileMenu()">
+        Nosotros
+      </a>
+
+      <!-- SERVICIOS ACORDEÃ“N -->
+      <div class="mobile-accordion">
+        <button
+          class="mobile-link accordion-trigger"
+          [class.mobile-active]="isMegaMenuOpen()"
+          [attr.aria-expanded]="isMegaMenuOpen()"
+          (click)="toggleMegaMenu()"
+        >
+          Servicios
+          <span class="chevron-icon" [class.rotated]="isMegaMenuOpen()" aria-hidden="true">
+            <lucide-angular [img]="ChevronDown" [size]="15" strokeWidth="2"></lucide-angular>
+          </span>
+        </button>
+
+        @if (isMegaMenuOpen()) {
+          <div class="accordion-panel">
+            @for (service of services; track service.path) {
+              <a
+                [routerLink]="service.path"
+                class="accordion-link"
+                (click)="closeMobileMenu()"
+              >
+                <span class="accordion-dot" aria-hidden="true"></span>
+                {{ service.title }}
+              </a>
+            }
+            <a
+              routerLink="/services"
+              class="accordion-link accordion-see-all"
+              (click)="closeMobileMenu()"
+            >
+              Ver todos â†’
+            </a>
+          </div>
+        }
+      </div>
+
+      <a routerLink="/portfolio"
+         routerLinkActive="mobile-active"
+         class="mobile-link"
+         (click)="closeMobileMenu()">
+        Portafolio
+      </a>
+
+      <!-- Nuevo enlace mÃ³vil: Tutoriales -->
+      <a routerLink="/tutorials"
+         routerLinkActive="mobile-active"
+         class="mobile-link"
+         (click)="closeMobileMenu()">
+        Tutoriales
+      </a>
+
+      <!-- Nuevo enlace mÃ³vil: Pagos -->
+      <a routerLink="/pricing"
+         routerLinkActive="mobile-active"
+         class="mobile-link"
+         (click)="closeMobileMenu()">
+        <lucide-angular [img]="CreditCard" [size]="15" strokeWidth="2"></lucide-angular>
+        Pagos
+      </a>
+
     </nav>
-  </div>
+
+    <!-- CTA mÃ³vil -->
+    <div class="mobile-menu-actions">
+      <a
+        routerLink="/contact"
+        class="mobile-cta"
+        (click)="closeMobileMenu()"
+      >
+        <lucide-angular [img]="MessageCircle" [size]="16" strokeWidth="2"></lucide-angular>
+        Iniciar proyecto
+      </a>
+    </div>
+
+  </div><!-- /mobile-menu -->
 }

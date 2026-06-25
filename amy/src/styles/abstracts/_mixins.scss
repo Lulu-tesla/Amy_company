@@ -54,19 +54,16 @@
       @content;
     }
   } @else {
-    @warn "Breakpoint '#{$breakpoint}' no encontrado en $breakpoints.";
+    @warn "Desafortunadamente, ningún valor se pudo recuperar de `#{$breakpoint}`. Por favor, asegúrese de que está definido en el mapa `$breakpoints`.";
   }
 }
 
-/// Media query max-width para estilos mobile-first inversos.
-/// @param {String} $breakpoint - Nombre del breakpoint
-@mixin respond-below($breakpoint) {
+// Media query para max-width (útil para móviles)
+@mixin respond-max($breakpoint) {
   @if map-has-key($breakpoints, $breakpoint) {
     @media (max-width: (map-get($breakpoints, $breakpoint) - 1px)) {
       @content;
     }
-  } @else {
-    @warn "Breakpoint '#{$breakpoint}' no encontrado en $breakpoints.";
   }
 }
 
@@ -162,6 +159,16 @@
   padding-right: $padding;
 }
 
+// Contenedor que rompe el grid para ocupar ancho completo pero mantiene padding
+@mixin full-width-container {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+
 // -----------------------------------------------------------
 // UTILIDADES ADICIONALES
 // -----------------------------------------------------------
@@ -181,7 +188,11 @@
   }
 }
 
-/// Oculta visualmente pero mantiene accesible para lectores de pantalla.
+// -----------------------------------------------------------
+// ACCESIBILIDAD Y RENDIMIENTO
+// -----------------------------------------------------------
+
+// Oculta contenido visualmente pero lo mantiene para lectores de pantalla
 @mixin visually-hidden {
   position: absolute;
   width: 1px;
@@ -194,10 +205,35 @@
   border: 0;
 }
 
-/// Estilo de foco accesible.
+// Anillo de foco accesible para interactivos
 @mixin focus-ring($color: $color-primary) {
   &:focus-visible {
     outline: 2px solid $color;
     outline-offset: 2px;
   }
+}
+
+// Tipografía fluida (calcula el tamaño ideal entre dos anchos de pantalla)
+@mixin fluid-type($min-font-size, $max-font-size, $min-vw: 320px, $max-vw: 1920px) {
+  $u1: unit($min-vw);
+  $u2: unit($max-vw);
+  $u3: unit($min-font-size);
+  $u4: unit($max-font-size);
+
+  @if $u1 == $u2 and $u1 == $u3 and $u1 == $u4 {
+    & {
+      font-size: $min-font-size;
+      @media screen and (min-width: $min-vw) {
+        font-size: calc(#{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} * ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}));
+      }
+      @media screen and (min-width: $max-vw) {
+        font-size: $max-font-size;
+      }
+    }
+  }
+}
+
+// Función auxiliar para tipografía fluida
+@function strip-unit($value) {
+  @return $value / ($value * 0 + 1);
 }

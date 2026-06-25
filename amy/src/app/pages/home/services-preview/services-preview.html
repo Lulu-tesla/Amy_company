@@ -1,49 +1,58 @@
-<!--
-  ARCHIVO: services-preview.html
+<section class="section soft-band">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-kicker">Servicios</span>
+      <h2>Soluciones digitales para negocios que quieren resultados.</h2>
+      <p class="lead">Estructura, diseño y mensajes listos para convertir visitas en acciones concretas.</p>
+    </div>
 
-  RESPONSABILIDAD:
-  Template de la vista previa de servicios en la página de inicio.
-  Muestra una cuadrícula de servicios con íconos y descripciones.
-
-  DEBE CONTENER:
-  - Título de sección 'Nuestros Servicios'.
-  - Grid de tarjetas de servicios.
-  - Enlace a la página completa de servicios.
-
-  NO DEBE CONTENER:
-  - Detalles extensos de cada servicio.
-  - Componentes de otras secciones.
-
-  MODIFICAR CUANDO:
-  - Se cambie la estructura visual de las tarjetas.
-  - Se agreguen elementos interactivos.
-
-  EJEMPLO DE USO:
-  Renderizado automáticamente por el componente ServicesPreview.
--->
-<section class="services-preview" aria-label="Vista previa de nuestros servicios">
-  <div class="services-preview__container">
-    <header class="services-preview__header">
-      <h2 class="services-preview__title">Nuestros Servicios</h2>
-      <p class="services-preview__subtitle">
-        Soluciones digitales integrales para impulsar tu negocio al siguiente nivel.
-      </p>
-    </header>
-
-    <div class="services-preview__grid">
-      @for (service of services(); track service.title) {
-        <article class="services-preview__card">
-          <span class="services-preview__icon" aria-hidden="true">{{ service.icon }}</span>
-          <h3 class="services-preview__card-title">{{ service.title }}</h3>
-          <p class="services-preview__card-description">{{ service.description }}</p>
+    <div class="grid grid-4 service-cards">
+      @for (service of services; track service.id) {
+        <article class="service-card">
+          <img class="service-image" src="{{ service.image }}" alt="{{ service.title }}" />
+          <div class="service-body">
+            <h3>{{ service.title }}</h3>
+            <p class="service-subtitle">{{ service.subtitle }}</p>
+            <p>{{ service.description }}</p>
+            <ul class="service-features">
+              @for (feature of service.features; track feature) {
+                <li>{{ feature }}</li>
+              }
+            </ul>
+            <button type="button" class="btn secondary" (click)="openService(service)">Ver detalle</button>
+          </div>
         </article>
       }
     </div>
 
-    <div class="services-preview__footer">
-      <a routerLink="/services" class="services-preview__link" aria-label="Ver todos nuestros servicios">
-        Ver todos los servicios →
-      </a>
+    <div class="button-row">
+      <a routerLink="/services" class="btn primary">Ver todos los servicios</a>
     </div>
   </div>
+
+  @if (selectedService) {
+    <div class="service-modal-backdrop" (click)="closeModal()">
+      <div class="service-modal" (click)="$event.stopPropagation()">
+        <div class="modal-header">
+          <div>
+            <span class="section-kicker">Detalle de servicio</span>
+            <h3>{{ selectedService.modalTitle }}</h3>
+            <p class="service-subtitle">{{ selectedService.subtitle }}</p>
+          </div>
+          <button type="button" class="icon-close" aria-label="Cerrar" (click)="closeModal()">×</button>
+        </div>
+        <div class="modal-body">
+          <p>{{ selectedService.description }}</p>
+          <ul class="modal-features">
+            @for (detail of selectedService.modalDetails; track detail) {
+              <li>{{ detail }}</li>
+            }
+          </ul>
+        </div>
+        <div class="modal-footer">
+          <a routerLink="/contact" class="btn primary">Solicitar propuesta</a>
+        </div>
+      </div>
+    </div>
+  }
 </section>

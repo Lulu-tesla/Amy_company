@@ -1,18 +1,22 @@
+<!-- 
+  RECOMENDACION DE DISEÑO: Utilizar <ng-content> para permitir inyección de cabecera, cuerpo y pie en la tarjeta. Aplicar un fondo sutil tipo glassmorphism y bordes de 1px semitransparentes.
+  PROMPT ADICIONAL: "Convierte este componente card en un contenedor reutilizable con <ng-content select='[card-header]'>, cuerpo y pie, aplicando un efecto de cristal (glassmorphism) moderno y sombra difuminada."
+-->
 <!--
   ARCHIVO: card.html
 
   RESPONSABILIDAD:
-  Template del componente Card. Muestra una tarjeta con imagen, ícono, título,
-  descripción y contenido proyectado via ng-content.
+  Template del componente Card. Muestra una tarjeta con imagen, Ã­cono, tÃ­tulo,
+  descripciÃ³n y contenido proyectado via ng-content.
 
   DEBE CONTENER:
-  - Imagen condicional si se proporcionó image
-  - Ícono condicional si se proporcionó icon
-  - Título y descripción
+  - Imagen condicional si se proporcionÃ³ image
+  - Ãcono condicional si se proporcionÃ³ icon
+  - TÃ­tulo y descripciÃ³n
   - Slot de ng-content para contenido personalizado
 
   NO DEBE CONTENER:
-  - Lógica compleja en el template
+  - LÃ³gica compleja en el template
   - Estilos inline
 -->
 
@@ -40,7 +44,7 @@
 
     @if (link()) {
       <a [href]="link()" class="card__link">
-        Ver más
+        Ver mÃ¡s
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M5 12h14M12 5l7 7-7 7"/>
         </svg>

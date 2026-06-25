@@ -1,29 +1,216 @@
 <!--
   ARCHIVO: footer.html
-  RESPONSABILIDAD: Plantilla del Footer
+  COMPONENTE: FooterComponent
+  PROYECTO: Amy Company - Angular v22
 -->
 <footer class="footer">
-  <div class="container">
-    <div class="grid">
-      <div class="col">
-        <h3>Amy Developers</h3>
-        <p>Transformamos ideas en experiencias digitales excepcionales.</p>
+
+  <!-- ────────────────────────────────────────────────────────────
+       GRID PRINCIPAL
+  ──────────────────────────────────────────────────────────────── -->
+  <div class="footer-inner">
+    <div class="footer-grid">
+
+      <!-- COL 1 — MARCA -->
+      <div class="footer-col col-brand">
+        <div class="brand-logo-wrap">
+          <img
+            src="assets/images/logo.png"
+            alt="Amy Company"
+            class="brand-logo"
+            loading="lazy"
+          />
+          <span class="logo-glow" aria-hidden="true"></span>
+        </div>
+
+        <p class="brand-tagline">
+          Transformamos ideas en<br />
+          <strong>experiencias digitales</strong> que impulsan<br />
+          el crecimiento de tu negocio.
+        </p>
+
+        <!-- Redes Sociales -->
+        <div class="social-strip" aria-label="Síguenos en redes sociales">
+          <a
+            href="https://instagram.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram de Amy Company"
+            class="social-link"
+          >
+            <lucide-angular [img]="Instagram" [size]="18" strokeWidth="1.8"></lucide-angular>
+          </a>
+          <a
+            href="https://linkedin.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn de Amy Company"
+            class="social-link"
+          >
+            <lucide-angular [img]="Linkedin" [size]="18" strokeWidth="1.8"></lucide-angular>
+          </a>
+          <a
+            href="https://facebook.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Facebook de Amy Company"
+            class="social-link"
+          >
+            <lucide-angular [img]="Facebook" [size]="18" strokeWidth="1.8"></lucide-angular>
+          </a>
+          <a
+            href="https://twitter.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Twitter de Amy Company"
+            class="social-link"
+          >
+            <lucide-angular [img]="Twitter" [size]="18" strokeWidth="1.8"></lucide-angular>
+          </a>
+        </div>
       </div>
-      <div class="col">
-        <h3>Enlaces</h3>
-        <a routerLink="/">Inicio</a>
-        <a routerLink="/about">Nosotros</a>
-        <a routerLink="/services">Servicios</a>
-        <a routerLink="/contact">Contacto</a>
+
+      <!-- COL 2 — EXPLORA -->
+      <div class="footer-col col-nav">
+        <h3 class="col-heading">
+          <span class="heading-accent"></span>
+          Explora
+        </h3>
+        <nav aria-label="Navegación principal del footer">
+          <ul class="footer-links">
+            <li>
+              <a routerLink="/" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
+                Inicio
+              </a>
+            </li>
+            <li>
+              <a routerLink="/about" routerLinkActive="active-link">
+                Sobre Nosotros
+              </a>
+            </li>
+            <li>
+              <a routerLink="/portfolio" routerLinkActive="active-link">
+                Portafolio de Proyectos
+              </a>
+            </li>
+            <li>
+              <a routerLink="/pricing" routerLinkActive="active-link">
+                Planes y Precios
+              </a>
+            </li>
+            <li>
+              <a routerLink="/faq" routerLinkActive="active-link">
+                Preguntas Frecuentes
+              </a>
+            </li>
+          </ul>
+        </nav>
       </div>
-      <div class="col">
-        <h3>Legal</h3>
-        <a routerLink="/privacy-policy">Política de Privacidad</a>
-        <a routerLink="/terms-of-service">Términos de Servicio</a>
+
+      <!-- COL 3 — SERVICIOS -->
+      <div class="footer-col col-services">
+        <h3 class="col-heading">
+          <span class="heading-accent"></span>
+          Nuestros Servicios
+        </h3>
+        <nav aria-label="Servicios de Amy Company">
+          <ul class="footer-links">
+            <li>
+              <a routerLink="/services/web-development" routerLinkActive="active-link">
+                Desarrollo Web
+              </a>
+            </li>
+            <li>
+              <a routerLink="/services/ecommerce" routerLinkActive="active-link">
+                Tiendas Online
+              </a>
+            </li>
+            <li>
+              <a routerLink="/services/ui-ux-design" routerLinkActive="active-link">
+                Diseño UI/UX
+              </a>
+            </li>
+            <li>
+              <a routerLink="/services/seo" routerLinkActive="active-link">
+                Marketing & SEO
+              </a>
+            </li>
+            <li>
+              <a routerLink="/services/branding" routerLinkActive="active-link">
+                Branding & Identidad
+              </a>
+            </li>
+            <li>
+              <a routerLink="/services" class="link-all" routerLinkActive="active-link">
+                Ver todos los servicios
+                <lucide-angular [img]="ArrowRight" [size]="14" strokeWidth="2"></lucide-angular>
+              </a>
+            </li>
+          </ul>
+        </nav>
       </div>
+
+      <!-- COL 4 — CONTACTO / CTA -->
+      <div class="footer-col col-contact">
+        <h3 class="col-heading">
+          <span class="heading-accent"></span>
+          ¿Tienes un proyecto?
+        </h3>
+
+        <p class="contact-pitch">
+          Cuéntanos tu idea y construyamos algo extraordinario juntos.
+        </p>
+
+        <a routerLink="/contact" class="btn-cta">
+          <lucide-angular [img]="MessageCircle" [size]="16" strokeWidth="2"></lucide-angular>
+          Hablemos ahora
+        </a>
+
+        <div class="contact-details">
+          <a
+            href="mailto:amycompany&#64;gmail.com"
+            class="contact-item"
+            aria-label="Enviar correo a Amy Company"
+          >
+            <span class="contact-icon">
+              <lucide-angular [img]="Mail" [size]="15" strokeWidth="1.8"></lucide-angular>
+            </span>
+            <span>amycompany&#64;gmail.com</span>
+          </a>
+
+          <a
+            href="https://wa.me/59174541365"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="contact-item"
+            aria-label="Contactar por WhatsApp"
+          >
+            <span class="contact-icon">
+              <lucide-angular [img]="Phone" [size]="15" strokeWidth="1.8"></lucide-angular>
+            </span>
+            <span>+591 7454 1365</span>
+          </a>
+        </div>
+      </div>
+
+    </div><!-- /footer-grid -->
+
+    <!-- ── SCAN LINE DIVISOR ── -->
+    <div class="scan-divider" aria-hidden="true">
+      <span class="scan-line"></span>
     </div>
-    <div class="bottom-bar">
-      <p>&copy; {{ currentYear }} Amy Developers. Todos los derechos reservados.</p>
+
+    <!-- ── SUB FOOTER ── -->
+    <div class="footer-bottom">
+      <p class="copyright">
+        &copy; {{ currentYear }} <strong>AMY COMPANY</strong>. Todos los derechos reservados.
+      </p>
+      <nav aria-label="Enlaces legales" class="legal-links">
+        <a routerLink="/privacy">Política de Privacidad</a>
+        <span class="legal-sep" aria-hidden="true">·</span>
+        <a routerLink="/terms">Términos de Servicio</a>
+      </nav>
     </div>
-  </div>
+
+  </div><!-- /footer-inner -->
 </footer>

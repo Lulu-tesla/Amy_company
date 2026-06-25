@@ -1,0 +1,5 @@
+.pricing-card { display: grid; gap: 1rem; align-content: start; }
+.pricing-card h2 { font-size: 2rem; }
+.pricing-card.featured { border-color: #14b8a6; box-shadow: 0 24px 60px rgba(20,184,166,.18); }
+ul { display: grid; gap: .5rem; color: #334155; }
+li::before { content: "✓"; margin-right: .45rem; color: #0f766e; font-weight: 900; }

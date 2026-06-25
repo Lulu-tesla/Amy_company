@@ -3,7 +3,7 @@
  *
  * RESPONSABILIDAD:
  * Envolver las páginas de la aplicación con la navegación (Navbar) y pie de página (Footer).
- * 
+ *
  * DEBE CONTENER:
  * - <app-navbar> y <app-footer>.
  * - <router-outlet> para el contenido principal.
@@ -13,13 +13,14 @@
  */
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { Navbar } from '../navbar/navbar';
-import { Footer } from '../footer/footer';
+import { NavbarComponent } from '../navbar/navbar';
+import { FooterComponent } from '../footer/footer';
 
 @Component({
   selector: 'app-main-layout',
-  imports: [RouterOutlet, Navbar, Footer],
+  standalone: true,
+  imports: [RouterOutlet, NavbarComponent, FooterComponent],
   templateUrl: './main-layout.html',
-  styleUrl: './main-layout.css'
+  styleUrls: ['./main-layout.css']
 })
 export class MainLayout {}

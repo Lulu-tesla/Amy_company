@@ -1,63 +1,16 @@
-<!--
-  ARCHIVO: faq-preview.html
-
-  RESPONSABILIDAD:
-  Template de la vista previa de preguntas frecuentes.
-  Muestra un accordion con las FAQs más comunes.
-
-  DEBE CONTENER:
-  - Título de sección 'Preguntas Frecuentes'.
-  - Accordion de preguntas con botón de toggle.
-  - Enlace a la página completa de FAQ.
-
-  NO DEBE CONTENER:
-  - Lista completa de todas las FAQs.
-  - Componentes de otras secciones.
-
-  MODIFICAR CUANDO:
-  - Se cambien las preguntas destacadas.
-  - Se agreguen animaciones al accordion.
-
-  EJEMPLO DE USO:
-  Renderizado automáticamente por el componente FaqPreview.
--->
-<section class="faq-preview" aria-label="Preguntas frecuentes">
-  <div class="faq-preview__container">
-    <header class="faq-preview__header">
-      <h2 class="faq-preview__title">Preguntas Frecuentes</h2>
-      <p class="faq-preview__subtitle">
-        Respuestas a las dudas más comunes sobre nuestros servicios.
-      </p>
-    </header>
-
-    <div class="faq-preview__list" role="list">
-      @for (faq of faqs(); track faq.question; let i = $index) {
-        <article class="faq-preview__item" [class.faq-preview__item--open]="faq.isOpen" role="listitem">
-          <button
-            class="faq-preview__question"
-            (click)="toggleFaq(i)"
-            [attr.aria-expanded]="faq.isOpen"
-            [attr.aria-controls]="'faq-answer-' + i"
-            type="button"
-          >
-            <span>{{ faq.question }}</span>
-            <span class="faq-preview__toggle-icon" aria-hidden="true">
-              {{ faq.isOpen ? '−' : '+' }}
-            </span>
-          </button>
-          @if (faq.isOpen) {
-            <div class="faq-preview__answer" [id]="'faq-answer-' + i" role="region">
-              <p>{{ faq.answer }}</p>
-            </div>
-          }
+<section class="section soft-band">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-kicker">Preguntas frecuentes</span>
+      <h2>Respuestas claras para avanzar sin dudas.</h2>
+    </div>
+    <div class="faq-list">
+      @for (item of faqs; track item.question) {
+        <article class="card">
+          <h3>{{ item.question }}</h3>
+          <p>{{ item.answer }}</p>
         </article>
       }
-    </div>
-
-    <div class="faq-preview__footer">
-      <a routerLink="/faq" class="faq-preview__link" aria-label="Ver todas las preguntas frecuentes">
-        Ver todas las preguntas →
-      </a>
     </div>
   </div>
 </section>

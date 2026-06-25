@@ -1,0 +1,6 @@
+.tutorial-card { display: flex; flex-direction: column; gap: 1rem; align-items: flex-start; }
+.tutorial-card h2 { font-size: 1.5rem; margin-top: 0.5rem; }
+.tutorial-meta { display: flex; gap: 0.75rem; align-items: center; width: 100%; font-size: 0.85rem; }
+.tutorial-type { background-color: #0f766e; color: white; padding: 0.2rem 0.6rem; border-radius: 999px; font-weight: 600; }
+.tutorial-duration { color: #64748b; font-weight: 500; }
+.tutorial-card .btn { margin-top: auto; }

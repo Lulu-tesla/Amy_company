@@ -1,48 +1,14 @@
-<!--
-  ARCHIVO: testimonials-preview.html
-
-  RESPONSABILIDAD:
-  Template de la vista previa de testimonios de clientes.
-  Muestra las citas y datos de clientes satisfechos.
-
-  DEBE CONTENER:
-  - Título de sección 'Lo que dicen nuestros clientes'.
-  - Tarjetas de testimonios con cita, nombre, rol y empresa.
-  - Avatar placeholder de cada cliente.
-
-  NO DEBE CONTENER:
-  - Carousel complejo o controles de navegación.
-  - Componentes de otras secciones.
-
-  MODIFICAR CUANDO:
-  - Se integren fotos reales de clientes.
-  - Se implemente un carousel interactivo.
-
-  EJEMPLO DE USO:
-  Renderizado automáticamente por el componente TestimonialsPreview.
--->
-<section class="testimonials-preview" aria-label="Testimonios de nuestros clientes">
-  <div class="testimonials-preview__container">
-    <header class="testimonials-preview__header">
-      <h2 class="testimonials-preview__title">Lo que dicen nuestros clientes</h2>
-      <p class="testimonials-preview__subtitle">
-        Historias de éxito que nos inspiran a seguir creando soluciones excepcionales.
-      </p>
-    </header>
-
-    <div class="testimonials-preview__grid">
-      @for (testimonial of testimonials(); track testimonial.name) {
-        <article class="testimonials-preview__card">
-          <blockquote class="testimonials-preview__quote">
-            <p>"{{ testimonial.quote }}"</p>
-          </blockquote>
-          <footer class="testimonials-preview__author">
-            <span class="testimonials-preview__avatar" aria-hidden="true">{{ testimonial.avatar }}</span>
-            <div class="testimonials-preview__author-info">
-              <strong class="testimonials-preview__name">{{ testimonial.name }}</strong>
-              <span class="testimonials-preview__role">{{ testimonial.role }}, {{ testimonial.company }}</span>
-            </div>
-          </footer>
+<section class="section soft-band">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-kicker">Testimonios</span>
+      <h2>Clientes que valoran claridad y resultados.</h2>
+    </div>
+    <div class="grid grid-2">
+      @for (item of testimonials; track item.author) {
+        <article class="card testimonial-card">
+          <p>"{{ item.quote }}"</p>
+          <strong>{{ item.author }}</strong>
         </article>
       }
     </div>

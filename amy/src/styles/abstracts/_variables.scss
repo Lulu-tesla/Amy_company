@@ -3,7 +3,7 @@
 //
 // RESPONSABILIDAD:
 // Definir todos los tokens de diseño (design tokens) de la
-// aplicación Amy Developers. Centraliza colores, tipografía,
+// aplicacion AMY COMPANY. Centraliza colores, tipografia,
 // espaciado, breakpoints, sombras, z-index y transiciones.
 //
 // DEBE CONTENER:
@@ -130,19 +130,25 @@ $spacing-4xl: 96px;
 $spacing-5xl: 128px;
 
 // -----------------------------------------------------------
-// BREAKPOINTS
+// BREAKPOINTS (Expandido para 320px - 1920px)
 // -----------------------------------------------------------
-$breakpoint-mobile: 480px;
-$breakpoint-tablet: 768px;
-$breakpoint-laptop: 1024px;
-$breakpoint-desktop: 1280px;
+$breakpoint-xs: 320px;
+$breakpoint-sm: 375px;
+$breakpoint-md: 425px;
+$breakpoint-lg: 768px;
+$breakpoint-xl: 1024px;
+$breakpoint-2xl: 1440px;
+$breakpoint-3xl: 1920px;
 
 // Mapa de breakpoints para el mixin respond-to()
 $breakpoints: (
-  'mobile': $breakpoint-mobile,
-  'tablet': $breakpoint-tablet,
-  'laptop': $breakpoint-laptop,
-  'desktop': $breakpoint-desktop
+  'xs': $breakpoint-xs,
+  'sm': $breakpoint-sm,
+  'md': $breakpoint-md,
+  'lg': $breakpoint-lg,
+  'xl': $breakpoint-xl,
+  '2xl': $breakpoint-2xl,
+  '3xl': $breakpoint-3xl
 );
 
 // -----------------------------------------------------------

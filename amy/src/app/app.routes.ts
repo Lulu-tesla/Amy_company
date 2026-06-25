@@ -9,12 +9,12 @@ export const routes: Routes = [
       {
         path: '',
         loadComponent: () => import('./pages/home/home').then(m => m.Home),
-        title: 'Amy Developers — Agencia Digital'
+        title: 'AMY COMPANY | Agencia digital en Bolivia'
       },
       {
         path: 'about',
         loadComponent: () => import('./pages/about/about').then(m => m.About),
-        title: 'Nosotros — Amy Developers'
+        title: 'Nosotros | AMY COMPANY'
       },
       {
         path: 'services',
@@ -23,28 +23,33 @@ export const routes: Routes = [
       {
         path: 'portfolio',
         loadComponent: () => import('./pages/portfolio/portfolio').then(m => m.Portfolio),
-        title: 'Portafolio — Amy Developers'
+        title: 'Portafolio | AMY COMPANY'
       },
       {
         path: 'pricing',
         loadComponent: () => import('./pages/pricing/pricing').then(m => m.Pricing),
-        title: 'Precios — Amy Developers'
+        title: 'Planes | AMY COMPANY'
       },
       {
         path: 'contact',
         loadComponent: () => import('./pages/contact/contact').then(m => m.Contact),
-        title: 'Contacto — Amy Developers'
+        title: 'Contacto | AMY COMPANY'
       },
       {
         path: 'faq',
         loadComponent: () => import('./pages/faq/faq').then(m => m.Faq),
-        title: 'Preguntas Frecuentes — Amy Developers'
+        title: 'Preguntas frecuentes | AMY COMPANY'
+      },
+      {
+        path: 'tutorials',
+        loadComponent: () => import('./pages/tutorials/tutorials').then(m => m.Tutorials),
+        title: 'Tutoriales | AMY COMPANY'
       }
     ]
   },
   {
     path: '**',
     loadComponent: () => import('./pages/not-found/not-found').then(m => m.NotFound),
-    title: 'Página no encontrada — Amy Developers'
+    title: 'Pagina no encontrada | AMY COMPANY'
   }
 ];

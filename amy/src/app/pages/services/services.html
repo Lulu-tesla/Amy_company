@@ -1,22 +1,26 @@
+<!-- 
+  RECOMENDACION DE DISEÑO: Mostrar los servicios en un grid asimétrico tipo "Bento Box". Usar iconos grandes de Lucide, y fondos oscuros con gradientes sutiles. Añadir un efecto de hover que revele más detalles del servicio.
+  PROMPT ADICIONAL: "Crea una cuadrícula estilo bento-box para los servicios, donde cada tarjeta tenga un tamaño diferente, efectos de hover con luz (glow track) que siga el cursor, y contenga ilustraciones abstractas."
+-->
 <!--
   ARCHIVO: services.html
 
   RESPONSABILIDAD:
-  Template de la página principal de servicios.
+  Template de la pÃ¡gina principal de servicios.
   Muestra hero + grid de tarjetas enlazadas a cada sub-servicio.
 
   DEBE CONTENER:
-  - Sección hero con título y descripción.
-  - Grid de tarjetas con icono, título, descripción y enlace.
-  - HTML semántico con aria-labels.
+  - SecciÃ³n hero con tÃ­tulo y descripciÃ³n.
+  - Grid de tarjetas con icono, tÃ­tulo, descripciÃ³n y enlace.
+  - HTML semÃ¡ntico con aria-labels.
 
   NO DEBE CONTENER:
   - Contenido de sub-servicios individuales.
-  - Lógica compleja (solo interpolación y enlaces).
+  - LÃ³gica compleja (solo interpolaciÃ³n y enlaces).
 
   MODIFICAR CUANDO:
   - Se agregue o elimine un servicio.
-  - Se actualicen textos o íconos.
+  - Se actualicen textos o Ã­conos.
 -->
 
 <section class="services-hero" aria-label="Encabezado de servicios">
@@ -29,78 +33,78 @@
   </div>
 </section>
 
-<section class="services-grid" aria-label="Catálogo de servicios">
+<section class="services-grid" aria-label="CatÃ¡logo de servicios">
   <div class="grid-container">
 
     <article class="service-card">
-      <div class="card-icon">🌐</div>
+      <div class="card-icon">ðŸŒ</div>
       <h2>Desarrollo Web</h2>
-      <p>Aplicaciones web modernas, rápidas y escalables con las últimas tecnologías.</p>
+      <p>Aplicaciones web modernas, rÃ¡pidas y escalables con las Ãºltimas tecnologÃ­as.</p>
       <a routerLink="web-development" class="card-link" aria-label="Ver detalles de Desarrollo Web">
-        Conocer más →
+        Conocer mÃ¡s â†’
       </a>
     </article>
 
     <article class="service-card">
-      <div class="card-icon">🛒</div>
+      <div class="card-icon">ðŸ›’</div>
       <h2>Tiendas Online</h2>
       <p>E-commerce optimizado para convertir visitantes en clientes satisfechos.</p>
       <a routerLink="ecommerce" class="card-link" aria-label="Ver detalles de Tiendas Online">
-        Conocer más →
+        Conocer mÃ¡s â†’
       </a>
     </article>
 
     <article class="service-card">
-      <div class="card-icon">🎨</div>
-      <h2>Diseño UI/UX</h2>
+      <div class="card-icon">ðŸŽ¨</div>
+      <h2>DiseÃ±o UI/UX</h2>
       <p>Interfaces intuitivas y experiencias de usuario que enamoran a tus clientes.</p>
-      <a routerLink="ui-ux-design" class="card-link" aria-label="Ver detalles de Diseño UI/UX">
-        Conocer más →
+      <a routerLink="ui-ux-design" class="card-link" aria-label="Ver detalles de DiseÃ±o UI/UX">
+        Conocer mÃ¡s â†’
       </a>
     </article>
 
     <article class="service-card">
-      <div class="card-icon">📱</div>
+      <div class="card-icon">ðŸ“±</div>
       <h2>Redes Sociales</h2>
-      <p>Gestión profesional de tus redes sociales para maximizar tu alcance e interacción.</p>
+      <p>GestiÃ³n profesional de tus redes sociales para maximizar tu alcance e interacciÃ³n.</p>
       <a routerLink="social-media-management" class="card-link" aria-label="Ver detalles de Redes Sociales">
-        Conocer más →
+        Conocer mÃ¡s â†’
       </a>
     </article>
 
     <article class="service-card">
-      <div class="card-icon">📈</div>
+      <div class="card-icon">ðŸ“ˆ</div>
       <h2>Marketing Digital</h2>
       <p>Estrategias de marketing basadas en datos para hacer crecer tu negocio.</p>
       <a routerLink="digital-marketing" class="card-link" aria-label="Ver detalles de Marketing Digital">
-        Conocer más →
+        Conocer mÃ¡s â†’
       </a>
     </article>
 
     <article class="service-card">
-      <div class="card-icon">✨</div>
+      <div class="card-icon">âœ¨</div>
       <h2>Branding & Identidad Visual</h2>
       <p>Crea una marca memorable que conecte emocionalmente con tu audiencia.</p>
       <a routerLink="branding" class="card-link" aria-label="Ver detalles de Branding">
-        Conocer más →
+        Conocer mÃ¡s â†’
       </a>
     </article>
 
     <article class="service-card">
-      <div class="card-icon">🔍</div>
-      <h2>Optimización SEO</h2>
-      <p>Posiciona tu sitio en los primeros resultados de Google de forma orgánica.</p>
+      <div class="card-icon">ðŸ”</div>
+      <h2>OptimizaciÃ³n SEO</h2>
+      <p>Posiciona tu sitio en los primeros resultados de Google de forma orgÃ¡nica.</p>
       <a routerLink="seo" class="card-link" aria-label="Ver detalles de SEO">
-        Conocer más →
+        Conocer mÃ¡s â†’
       </a>
     </article>
 
     <article class="service-card">
-      <div class="card-icon">📣</div>
+      <div class="card-icon">ðŸ“£</div>
       <h2>Publicidad Digital</h2>
-      <p>Campañas publicitarias en Google Ads, Meta Ads y más para resultados inmediatos.</p>
+      <p>CampaÃ±as publicitarias en Google Ads, Meta Ads y mÃ¡s para resultados inmediatos.</p>
       <a routerLink="advertising" class="card-link" aria-label="Ver detalles de Publicidad Digital">
-        Conocer más →
+        Conocer mÃ¡s â†’
       </a>
     </article>
 

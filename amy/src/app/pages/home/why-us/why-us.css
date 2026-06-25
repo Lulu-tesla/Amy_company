@@ -1,0 +1,111 @@
+.why-us-section {
+  position: relative;
+  overflow: hidden;
+  padding: 5rem 0;
+  background: radial-gradient(circle at top right, rgba(15, 150, 255, 0.18), transparent 22%),
+    radial-gradient(circle at bottom left, rgba(34, 211, 238, 0.12), transparent 18%),
+    linear-gradient(180deg, #04121f 0%, #071828 100%);
+  color: #f8fafc;
+}
+
+.why-us-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(14, 165, 233, 0.08), transparent 36%);
+  pointer-events: none;
+}
+
+.why-us-section .container {
+  position: relative;
+  z-index: 1;
+}
+
+.why-us-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 2.5rem;
+}
+
+.accordion-card {
+  background: rgba(11, 22, 41, 0.9);
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-radius: 1.5rem;
+  overflow: hidden;
+  box-shadow: 0 24px 40px -28px rgba(0, 0, 0, 0.5);
+}
+
+.accordion-trigger {
+  width: 100%;
+  border: none;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  padding: 1.5rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  cursor: pointer;
+}
+
+.accordion-summary {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.accordion-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: rgba(14, 165, 233, 0.16);
+  color: #0ff6ff;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.accordion-trigger h3 {
+  margin: 0 0 0.35rem;
+  font-size: 1.05rem;
+}
+
+.accordion-trigger p {
+  margin: 0;
+  color: #cbd5e1;
+  line-height: 1.5;
+}
+
+.accordion-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.accordion-panel {
+  padding: 0 1.5rem 1.5rem;
+  border-top: 1px solid rgba(148, 163, 184, 0.08);
+}
+
+.accordion-panel p {
+  margin: 0;
+  color: #e2e8f0;
+  line-height: 1.8;
+}
+
+@media (max-width: 900px) {
+  .why-us-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -21,7 +21,7 @@ import { Component, input } from '@angular/core';
       </div>
     </div>
   `,
-  styleUrl: './card.css'
+    styleUrls: ['./card.css']
 })
 export class Card {
   title = input.required<string>();

@@ -23,7 +23,7 @@ import { NgClass } from '@angular/common';
       </button>
     }
   `,
-  styleUrl: './button.css'
+    styleUrls: ['./button.css']
 })
 export class Button {
   label = input.required<string>();

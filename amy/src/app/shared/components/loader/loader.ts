@@ -13,7 +13,7 @@ import { NgClass } from '@angular/common';
   template: `
     <div [ngClass]="['loader', 'loader-' + type(), 'loader-' + size()]"></div>
   `,
-  styleUrl: './loader.css'
+    styleUrls: ['./loader.css']
 })
 export class Loader {
   size = input<'sm' | 'md' | 'lg'>('md');

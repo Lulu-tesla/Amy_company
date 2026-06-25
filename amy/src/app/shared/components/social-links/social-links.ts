@@ -24,7 +24,7 @@ export interface SocialLink {
       }
     </div>
   `,
-  styleUrl: './social-links.css'
+  styleUrls: ['./social-links.css']
 })
 export class SocialLinks {
   links = input.required<SocialLink[]>();

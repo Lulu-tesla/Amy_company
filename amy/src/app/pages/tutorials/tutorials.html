@@ -1,0 +1,26 @@
+<!-- 
+  RECOMENDACION DE DISEÑO: Incorporar una barra lateral o superior con filtros por categoría (Ej: Video, Guía escrita) y una barra de búsqueda. Usar tarjetas con miniaturas (thumbnails) grandes estilo YouTube para los videos.
+  PROMPT ADICIONAL: "Agrega una barra superior de filtros por categorías y diseña las tarjetas de tutoriales para incluir una imagen de miniatura, añadiendo un botón de 'play' superpuesto que aparezca con una suave animación al hacer hover."
+-->
+<section class="hero-section">
+  <div class="container">
+    <span class="section-kicker">Aprende</span>
+    <h1>Tutoriales y GuÃ­as</h1>
+    <p class="lead">Saca el mÃ¡ximo provecho a tus herramientas digitales con nuestros tutoriales paso a paso.</p>
+  </div>
+</section>
+<section class="section soft-band">
+  <div class="container grid grid-3">
+    @for (tutorial of tutorials; track tutorial.title) {
+      <article class="card feature-card tutorial-card">
+        <div class="tutorial-meta">
+          <span class="tutorial-type">{{ tutorial.type }}</span>
+          <span class="tutorial-duration">{{ tutorial.duration }}</span>
+        </div>
+        <h2>{{ tutorial.title }}</h2>
+        <p>{{ tutorial.description }}</p>
+        <button class="btn">Ver tutorial</button>
+      </article>
+    }
+  </div>
+</section>

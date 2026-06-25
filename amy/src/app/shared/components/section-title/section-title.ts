@@ -20,7 +20,7 @@ import { Component, input } from '@angular/core';
       }
     </div>
   `,
-  styleUrl: './section-title.css'
+  styleUrls: ['./section-title.css']
 })
 export class SectionTitle {
   title = input.required<string>();

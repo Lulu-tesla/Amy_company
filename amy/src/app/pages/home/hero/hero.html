@@ -1,53 +1,57 @@
-<!--
-  ARCHIVO: hero.html
+<section class="hero-section hero-home">
+  <div class="hero-background" aria-hidden="true">
+    <canvas #heroCanvas class="hero-canvas"></canvas>
+    <!-- PLACEHOLDER: assets/images/hero/hero-bg.jpg
+         Dimensiones recomendadas: 1920x1080px -->
+    <div class="hero-overlay"></div>
+  </div>
 
-  RESPONSABILIDAD:
-  Template de la sección Hero de la página de inicio.
-  Presenta el mensaje principal de Amy Developers con CTAs.
-
-  DEBE CONTENER:
-  - Título principal con mensaje de transformación digital.
-  - Subtítulo descriptivo de servicios.
-  - Dos botones CTA: Ver Portafolio y Contactar.
-  - Área placeholder para imagen o animación.
-
-  NO DEBE CONTENER:
-  - Navbar, footer u otros componentes de layout.
-  - Scripts o lógica compleja.
-
-  MODIFICAR CUANDO:
-  - Se actualice el mensaje principal de la agencia.
-  - Se integre contenido visual real (imágenes, animaciones).
-  - Se cambien los destinos de los CTAs.
-
-  EJEMPLO DE USO:
-  Renderizado automáticamente por el componente Hero.
--->
-<section class="hero" aria-label="Sección principal de bienvenida">
-  <div class="hero__container">
-    <div class="hero__content">
-      <h1 class="hero__title">
-        Transformamos ideas en experiencias digitales
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <span class="section-kicker">Agencia digital 360</span>
+      <h1>
+        <span class="typewriter" #typewriterText></span>
+        <span class="cursor">|</span>
       </h1>
-      <p class="hero__subtitle">
-        En Amy Developers, creamos soluciones digitales que impulsan tu negocio.
-        Desde desarrollo web y e-commerce hasta branding, SEO y marketing digital,
-        somos tu socio estratégico para conquistar el mundo digital.
+      <p class="lead">
+        AMY COMPANY crea sitios, tiendas y marcas digitales que impactan de inmediato, funcionan en todos los dispositivos y convierten visitas en clientes.
       </p>
-      <div class="hero__actions">
-        <a routerLink="/portfolio" class="hero__btn hero__btn--primary" aria-label="Ver nuestro portafolio de proyectos">
-          Ver Portafolio
-        </a>
-        <a routerLink="/contact" class="hero__btn hero__btn--secondary" aria-label="Contactar con Amy Developers">
-          Contactar
-        </a>
+
+      <div class="button-row hero-buttons">
+        <a routerLink="/contact" class="btn primary btn-bubble">Solicitar propuesta</a>
+        <a routerLink="/services" class="btn btn-outline btn-bubble">Ver servicios</a>
+        <a routerLink="/portfolio" class="btn btn-ghost btn-bubble">Ver portafolio</a>
+      </div>
+
+      <div class="stats-strip" aria-label="Indicadores de confianza">
+        @for (stat of stats; track stat.title) {
+          <div class="stat-card">
+            <strong>{{ stat.display }}</strong>
+            <span>{{ stat.title }}</span>
+          </div>
+        }
       </div>
     </div>
 
-    <div class="hero__visual" aria-hidden="true">
-      <div class="hero__image-placeholder">
-        <span class="hero__placeholder-icon">🚀</span>
-        <p class="hero__placeholder-text">Imagen / Animación Hero</p>
+    <div class="hero-panel" aria-label="Resumen de métricas y enfoque creativo">
+      <div class="panel-card">
+        <div class="panel-tag">Estrategia + Diseño + Lanzamiento</div>
+        <h2>Impulsamos proyectos con estructura comercial clara.</h2>
+        <p>Con una comunicación visual sencilla y una experiencia pensada para que el usuario actúe rápido.</p>
+        <div class="panel-grid">
+          <div>
+            <span class="panel-number">01</span>
+            <p>Auditoría de presencia digital</p>
+          </div>
+          <div>
+            <span class="panel-number">02</span>
+            <p>Propuesta de conversión y estructura</p>
+          </div>
+          <div>
+            <span class="panel-number">03</span>
+            <p>Diseño y desarrollo sobre métricas reales</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>

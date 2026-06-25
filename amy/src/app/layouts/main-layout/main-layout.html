@@ -1,9 +1,9 @@
-<!--
-  ARCHIVO: main-layout.html
-  RESPONSABILIDAD: Plantilla del Main Layout
+<!-- 
+  RECOMENDACION DE DISEÑO: Este layout es la estructura base. Debe contener el Navbar fijo arriba, un <main> con padding superior para compensar el navbar, y el Footer al fondo. Usar flexbox (flex-grow) para asegurar que el footer siempre quede abajo aunque el contenido sea corto.
+  PROMPT ADICIONAL: "Ajusta el main-layout.html para que el contenedor principal ocupe al menos el 100vh de la pantalla usando flex-col y flex-grow, manteniendo el footer siempre pegado al fondo."
 -->
-<app-navbar />
-<main class="main-content">
-  <router-outlet />
+<app-navbar></app-navbar>
+<main id="main-content" class="main-content">
+  <router-outlet></router-outlet>
 </main>
-<app-footer />
+<app-footer></app-footer>

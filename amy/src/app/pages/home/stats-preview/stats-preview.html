@@ -1,41 +1,10 @@
-<!--
-  ARCHIVO: stats-preview.html
-
-  RESPONSABILIDAD:
-  Template de la sección de estadísticas de Amy Developers.
-  Muestra los números clave de la agencia.
-
-  DEBE CONTENER:
-  - Título de sección 'Amy en números'.
-  - Contadores de proyectos, clientes, años y satisfacción.
-  - Ícono y etiqueta de cada métrica.
-
-  NO DEBE CONTENER:
-  - Gráficos complejos o dashboards.
-  - Componentes de otras secciones.
-
-  MODIFICAR CUANDO:
-  - Se integren animaciones de conteo.
-  - Se actualicen los valores numéricos.
-
-  EJEMPLO DE USO:
-  Renderizado automáticamente por el componente StatsPreview.
--->
-<section class="stats-preview" aria-label="Amy Developers en números">
-  <div class="stats-preview__container">
-    <header class="stats-preview__header">
-      <h2 class="stats-preview__title">Amy en números</h2>
-      <p class="stats-preview__subtitle">
-        Resultados que hablan por sí mismos.
-      </p>
-    </header>
-
-    <div class="stats-preview__grid">
-      @for (stat of stats(); track stat.label) {
-        <article class="stats-preview__item">
-          <span class="stats-preview__icon" aria-hidden="true">{{ stat.icon }}</span>
-          <span class="stats-preview__value">{{ stat.value }}</span>
-          <span class="stats-preview__label">{{ stat.label }}</span>
+<section class="section">
+  <div class="container">
+    <div class="grid grid-4 stats-grid">
+      @for (item of stats; track item.title) {
+        <article class="card feature-card">
+          <h3>{{ item.title }}</h3>
+          <p>{{ item.text }}</p>
         </article>
       }
     </div>
